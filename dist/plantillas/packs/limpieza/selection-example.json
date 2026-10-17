@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "limpieza",
+  "pack_version": "1.0.0",
+  "style_id": "editorial",
+  "plan": "premium",
+  "brand": {
+    "name": "Espacio limpio",
+    "headline": "Un espacio para empezar de nuevo.",
+    "primary": "#3174b7"
+  },
+  "origin": "owner",
+  "status": "draft",
+  "requires_owner_review": true,
+  "runtime_ai": false,
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/limpieza",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "limpieza-1",
+          "name": "Limpieza de hogar",
+          "category": "Hogar",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "limpieza-2",
+          "name": "Plan para oficinas",
+          "category": "Oficinas",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "limpieza-3",
+          "name": "Limpieza de entrega",
+          "category": "Servicios puntuales",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Hogar",
+        "Oficinas",
+        "Servicios puntuales"
+      ],
+      "pipeline": [
+        "Solicitud",
+        "Visita técnica",
+        "Presupuesto enviado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "limpieza-consulta",
+        "limpieza-cotizacion",
+        "limpieza-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre servicios de limpieza?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre hogar, oficinas y servicios puntuales. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Limpieza de hogar",
+        "Plan para oficinas",
+        "Limpieza de entrega"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "limpieza_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "pos_enabled": false,
+  "deployment": {
+    "applied": false,
+    "requires_adapter": true,
+    "requires_backup": true
+  },
+  "requirements": []
+}

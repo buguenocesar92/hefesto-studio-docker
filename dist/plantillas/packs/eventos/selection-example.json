@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "eventos",
+  "pack_version": "1.0.0",
+  "style_id": "editorial",
+  "plan": "premium",
+  "brand": {
+    "name": "Encuentro estudio",
+    "headline": "Que el momento lo diga todo.",
+    "primary": "#f5abdc"
+  },
+  "origin": "owner",
+  "status": "draft",
+  "requires_owner_review": true,
+  "runtime_ai": false,
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/eventos",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "eventos-1",
+          "name": "Producción de evento",
+          "category": "Producción",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "eventos-2",
+          "name": "Propuesta de ambientación",
+          "category": "Ambientación",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "eventos-3",
+          "name": "Coordinación del día",
+          "category": "Coordinación",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Producción",
+        "Ambientación",
+        "Coordinación"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Disponibilidad revisada",
+        "Propuesta enviada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "eventos-consulta",
+        "eventos-cotizacion",
+        "eventos-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre productora de eventos?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre producción, ambientación y coordinación. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Producción de evento",
+        "Propuesta de ambientación",
+        "Coordinación del día"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "eventos_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "pos_enabled": false,
+  "deployment": {
+    "applied": false,
+    "requires_adapter": true,
+    "requires_backup": true
+  },
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ]
+}

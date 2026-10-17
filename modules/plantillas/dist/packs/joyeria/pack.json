@@ -1,0 +1,218 @@
+{
+  "id": "joyeria",
+  "version": "1.0.0",
+  "name": "Joyería",
+  "category": "Especializados",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "shop",
+  "minimum_plan": "basico",
+  "tags": [
+    "Catálogo",
+    "Cotización",
+    "Seguimiento"
+  ],
+  "brand": {
+    "name": "Detalle atelier",
+    "headline": "Una pieza. Tu historia.",
+    "primary": "#957338",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Ver las piezas",
+  "categories": [
+    "Colecciones",
+    "A medida",
+    "Cuidado"
+  ],
+  "items": [
+    {
+      "id": "joyeria-1",
+      "name": "Anillo de muestra",
+      "category": "Colecciones",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "joyeria-2",
+      "name": "Colgante de colección",
+      "category": "A medida",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "joyeria-3",
+      "name": "Servicio de ajuste",
+      "category": "Cuidado",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "En evaluación",
+    "Propuesta enviada"
+  ],
+  "pages": [
+    "Inicio",
+    "Catálogo",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "inventory",
+    "pos"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/joyeria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "joyeria-1",
+          "name": "Anillo de muestra",
+          "category": "Colecciones",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "joyeria-2",
+          "name": "Colgante de colección",
+          "category": "A medida",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "joyeria-3",
+          "name": "Servicio de ajuste",
+          "category": "Cuidado",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Colecciones",
+        "A medida",
+        "Cuidado"
+      ],
+      "pipeline": [
+        "Consulta",
+        "En evaluación",
+        "Propuesta enviada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "joyeria-consulta",
+        "joyeria-cotizacion",
+        "joyeria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre joyería?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre colecciones, a medida y cuidado. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Anillo de muestra",
+        "Colgante de colección",
+        "Servicio de ajuste"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "joyeria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "ritual",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": true,
+    "photo": null,
+    "illustration": "rings"
+  }
+}

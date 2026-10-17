@@ -1,0 +1,26 @@
+{
+  "format": "adapter-input-json",
+  "minimum_plan": "intermedio",
+  "labels": [
+    "imprenta-consulta",
+    "imprenta-cotizacion",
+    "imprenta-seguimiento"
+  ],
+  "canned_responses": [
+    {
+      "short_code": "bienvenida",
+      "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre imprenta?"
+    },
+    {
+      "short_code": "disponibilidad",
+      "content": "Podemos orientarte sobre impresión, gran formato y terminaciones. Indícanos qué necesitas."
+    },
+    {
+      "short_code": "seguimiento",
+      "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+    }
+  ],
+  "business_hours": null,
+  "channels_enabled": [],
+  "automation_rules": []
+}

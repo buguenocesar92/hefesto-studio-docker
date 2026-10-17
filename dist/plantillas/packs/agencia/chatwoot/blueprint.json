@@ -1,0 +1,26 @@
+{
+  "format": "adapter-input-json",
+  "minimum_plan": "intermedio",
+  "labels": [
+    "agencia-consulta",
+    "agencia-cotizacion",
+    "agencia-seguimiento"
+  ],
+  "canned_responses": [
+    {
+      "short_code": "bienvenida",
+      "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre agencia creativa?"
+    },
+    {
+      "short_code": "disponibilidad",
+      "content": "Podemos orientarte sobre identidad, contenido y campañas. Indícanos qué necesitas."
+    },
+    {
+      "short_code": "seguimiento",
+      "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+    }
+  ],
+  "business_hours": null,
+  "channels_enabled": [],
+  "automation_rules": []
+}

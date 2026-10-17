@@ -1,0 +1,217 @@
+{
+  "id": "jardineria",
+  "version": "1.0.0",
+  "name": "Jardinería",
+  "category": "Hogar y oficios",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "service",
+  "minimum_plan": "basico",
+  "tags": [
+    "Visita",
+    "Presupuesto",
+    "Seguimiento"
+  ],
+  "brand": {
+    "name": "Verde en casa",
+    "headline": "Cultiva tu propio refugio.",
+    "primary": "#2b5e42",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Pedir asesoría",
+  "categories": [
+    "Diseño",
+    "Mantención",
+    "Plantas"
+  ],
+  "items": [
+    {
+      "id": "jardineria-1",
+      "name": "Diseño de jardín",
+      "category": "Diseño",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "jardineria-2",
+      "name": "Visita de mantención",
+      "category": "Mantención",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "jardineria-3",
+      "name": "Selección de plantas",
+      "category": "Plantas",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Solicitud",
+    "Visita técnica",
+    "Presupuesto enviado"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/jardineria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "jardineria-1",
+          "name": "Diseño de jardín",
+          "category": "Diseño",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "jardineria-2",
+          "name": "Visita de mantención",
+          "category": "Mantención",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "jardineria-3",
+          "name": "Selección de plantas",
+          "category": "Plantas",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Diseño",
+        "Mantención",
+        "Plantas"
+      ],
+      "pipeline": [
+        "Solicitud",
+        "Visita técnica",
+        "Presupuesto enviado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "jardineria-consulta",
+        "jardineria-cotizacion",
+        "jardineria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre jardinería?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre diseño, mantención y plantas. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Diseño de jardín",
+        "Visita de mantención",
+        "Selección de plantas"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "jardineria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "flora",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "forest",
+    "illustration": "leaf"
+  }
+}

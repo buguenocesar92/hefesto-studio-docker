@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "id": "kraftdo",
+  "client": "KraftDo",
+  "featured": true,
+  "first_client": true,
+  "first_custom_project": true,
+  "urls": {
+    "website": "https://kraftdo.cl/",
+    "platform": "https://app.kraftdo.cl/",
+    "instagram": "https://www.instagram.com/kraftdonfc/"
+  },
+  "stack": [
+    "React",
+    "Next.js / Vinext",
+    "TypeScript",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "Three.js",
+    "GSAP",
+    "Drizzle",
+    "Better Auth",
+    "Cloudflare Workers",
+    "D1 / R2",
+    "Flow",
+    "Resend",
+    "QStash",
+    "Docker",
+    "Caddy"
+  ],
+  "features": [
+    {
+      "category": "experience",
+      "title_es": "Sitio de marca y experiencia digital",
+      "title_en": "Brand website and digital experience",
+      "body_es": "Diseño responsive, identidad KraftDo, español e inglés, temas claro/oscuro/sistema y animaciones con Three.js y GSAP. Una presentación comercial conectada con el acceso a la plataforma.",
+      "body_en": "Responsive design, KraftDo branding, Spanish and English, light/dark/system themes and Three.js/GSAP animation. A marketing website connected to the platform.",
+      "id": "kraftdo-01"
+    },
+    {
+      "category": "experience",
+      "title_es": "Perfiles NFC y QR",
+      "title_en": "NFC and QR profiles",
+      "body_es": "Editor de perfiles con nombre, descripción, enlaces, contacto y galería. URLs amigables personalizables, compatibilidad con UUID y recuperación de tarjetas anteriores con su identidad visual.",
+      "body_en": "Profile editor with names, descriptions, links, contact details and galleries. Custom friendly URLs, UUID compatibility and recovery of existing branded cards.",
+      "id": "kraftdo-02"
+    },
+    {
+      "category": "experience",
+      "title_es": "Regalos que guardan recuerdos",
+      "title_en": "Gifts that preserve memories",
+      "body_es": "Regalos digitales con fotografías y videos vinculados a un objeto físico. Gestión de contenido y posibilidad de pausar el enlace para retirar su acceso.",
+      "body_en": "Digital gifts with photographs and videos linked to a physical object. Content management and links that can be paused to revoke access.",
+      "id": "kraftdo-03"
+    },
+    {
+      "category": "experience",
+      "title_es": "Simulador de sublimación",
+      "title_en": "Sublimation preview",
+      "body_es": "Carga de fotografías y diseños, ajustes de composición y descarga de una vista previa para visualizar productos personalizados antes de producirlos.",
+      "body_en": "Upload photos and designs, adjust the composition and download a preview to visualise personalised products before production.",
+      "id": "kraftdo-04"
+    },
+    {
+      "category": "business",
+      "title_es": "Contactos y reseñas moderadas",
+      "title_en": "Contacts and moderated reviews",
+      "body_es": "Formularios conectados con una bandeja propia para cada usuario. Recepción de contactos, aprobación y retirada de reseñas, con separación de información por propietario.",
+      "body_en": "Forms connected to each user’s inbox. Contact collection, review approval and removal, with information separated by owner.",
+      "id": "kraftdo-05"
+    },
+    {
+      "category": "business",
+      "title_es": "Productos, pedidos y despacho",
+      "title_en": "Products, orders and delivery",
+      "body_es": "Catálogo de productos físicos y digitales, datos del destinatario, dirección, comuna y región. Desglose de despacho por tarifas registradas según destino, peso y volumen.",
+      "body_en": "Physical and digital product catalogue, recipient information and delivery address. Shipping breakdown using registered destination, weight and volume rates.",
+      "id": "kraftdo-06"
+    },
+    {
+      "category": "business",
+      "title_es": "Pagos y mensualidad con Flow",
+      "title_en": "Flow payments and subscriptions",
+      "body_es": "Integración de checkout, confirmación de pagos y soporte para mensualidad. Descuento de stock al confirmar el pago. La validación productiva y el plan comercial dependen de la configuración del proveedor.",
+      "body_en": "Checkout, payment confirmation and subscription support. Stock deduction on confirmed payment. Production validation and the commercial plan depend on provider configuration.",
+      "id": "kraftdo-07"
+    },
+    {
+      "category": "business",
+      "title_es": "Gestión del negocio",
+      "title_en": "Business operations",
+      "body_es": "Materiales, stock, compras, gastos, ventas, costos y márgenes. Exportaciones Excel/CSV para seguir trabajando con la información fuera de la plataforma.",
+      "body_en": "Materials, stock, purchases, expenses, sales, costs and margins. Excel/CSV exports to work with business information outside the platform.",
+      "id": "kraftdo-08"
+    },
+    {
+      "category": "operations",
+      "title_es": "Alertas y automatizaciones",
+      "title_en": "Alerts and automation",
+      "body_es": "Destinatarios y horarios configurables para stock, despachos pendientes y resúmenes. Integración de QStash y Resend para tareas programadas y correo, con registro de ejecuciones.",
+      "body_en": "Configurable recipients and schedules for stock alerts, pending deliveries and summaries. QStash and Resend integration for scheduled tasks and email, with execution records.",
+      "id": "kraftdo-09"
+    },
+    {
+      "category": "operations",
+      "title_es": "Cuentas, permisos y seguridad",
+      "title_en": "Accounts, permissions and security",
+      "body_es": "Acceso con correo y conectores Google/Facebook. Sesión compartida entre dominios, roles de administración, recuperación de contraseña y verificación adicional por correo o Authenticator.",
+      "body_en": "Email access and Google/Facebook connectors. Shared sessions across domains, administration roles, password recovery and additional email or Authenticator verification.",
+      "id": "kraftdo-10"
+    },
+    {
+      "category": "operations",
+      "title_es": "Contenido y herramientas creativas",
+      "title_en": "Content and creative tools",
+      "body_es": "Blog y desarrollo de conectores para Instagram y Canva. Sincronización de contenido de una cuenta profesional; conexión de diseños, subida de imágenes y exportaciones con Canva Connect. Activación sujeta a permisos y revisión del proveedor.",
+      "body_en": "Blog and Instagram/Canva connectors. Professional-account content sync; design access, image uploads and exports through Canva Connect. Activation depends on provider permissions and review.",
+      "id": "kraftdo-11"
+    },
+    {
+      "category": "operations",
+      "title_es": "Continuidad, datos y portabilidad",
+      "title_en": "Continuity, data and portability",
+      "body_es": "Respaldo y restauración de base de datos y archivos, documentación técnica y variante preparada para VPS con Docker y Caddy. Páginas públicas de privacidad y solicitud de eliminación de datos.",
+      "body_en": "Database and file backup/restore, technical documentation and a VPS-ready variant using Docker and Caddy. Public privacy and data deletion request pages.",
+      "id": "kraftdo-12"
+    }
+  ],
+  "evidence": {
+    "shared_conversation": "https://chatgpt.com/share/6ac7e697-18c4-83e8-9584-e3501d93f06b",
+    "source_reviewed": "kraftdo-studio: README.md, docs/INTEGRACIONES.md, docs/VPS.md, app/api, lib/commerce.ts",
+    "reviewed_on": "2026-10-08",
+    "notes": "Implementation evidence is not proof of production activation. No revenue, customer counts, testimonials or SLA claims."
+  },
+  "images": [
+    {
+      "file": "tarjeta-nfc-telefono.webp",
+      "source": "https://www.instagram.com/kraftdonfc/p/DXLC98DDcI5/"
+    },
+    {
+      "file": "tags-nfc-3d.webp",
+      "source": "https://www.instagram.com/kraftdonfc/p/DaVyHs1RYr7/"
+    },
+    {
+      "file": "cuadro-graduacion.webp",
+      "source": "https://www.instagram.com/kraftdonfc/p/DXMNjp1jYtx/"
+    }
+  ],
+  "integrations": [
+    {
+      "id": "flow",
+      "name": "Flow",
+      "title_es": "Pagos y suscripciones",
+      "title_en": "Payments and subscriptions",
+      "body_es": "Checkout, confirmación de transacciones, pedidos y cobro mensual.",
+      "body_en": "Checkout, transaction confirmation, orders and monthly billing.",
+      "status_es": "Sandbox documentado; producción y precio mensual por validar.",
+      "status_en": "Sandbox documented; production and monthly pricing require validation."
+    },
+    {
+      "id": "canva",
+      "name": "Canva Connect",
+      "title_es": "Diseño conectado",
+      "title_en": "Connected design",
+      "body_es": "OAuth PKCE por usuario, tokens cifrados, listado y creación de diseños, editor oficial, subida de imágenes y exportación PNG/JPG/PDF/MP4.",
+      "body_en": "Per-user OAuth PKCE, encrypted tokens, design listing and creation, official editor, image upload and PNG/JPG/PDF/MP4 exports.",
+      "status_es": "Conector desarrollado; requiere credenciales, permisos y revisión de Canva.",
+      "status_en": "Connector developed; Canva credentials, permissions and review required."
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram / Meta",
+      "title_es": "Contenido social",
+      "title_en": "Social content",
+      "body_es": "Sincronización de publicaciones, reels e historias de cuentas profesionales, conservación del último contenido y ocultación de historias vencidas.",
+      "body_en": "Professional-account posts, reels and stories sync, last-content retention and expired-story handling.",
+      "status_es": "Requiere cuenta profesional autorizada. No incluye publicación automática.",
+      "status_en": "Requires an authorised professional account. Does not include automatic posting."
+    },
+    {
+      "id": "google",
+      "name": "Google OAuth",
+      "title_es": "Acceso social",
+      "title_en": "Social sign-in",
+      "body_es": "Inicio de sesión con cuenta Google y retorno seguro a la plataforma.",
+      "body_en": "Google account sign-in and return to the platform.",
+      "status_es": "Implementado; activación sujeta a configuración del cliente OAuth.",
+      "status_en": "Implemented; activation depends on OAuth client configuration."
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook Login",
+      "title_es": "Identidad social",
+      "title_en": "Social identity",
+      "body_es": "Inicio de sesión con Facebook, dominios y retornos autorizados.",
+      "body_en": "Facebook sign-in with authorised domains and callback URLs.",
+      "status_es": "Implementado; requiere permisos y configuración de Meta.",
+      "status_en": "Implemented; Meta permissions and configuration required."
+    },
+    {
+      "id": "auth",
+      "name": "Better Auth + MFA",
+      "title_es": "Seguridad de cuentas",
+      "title_en": "Account security",
+      "body_es": "Sesiones, roles, recuperación, verificación por correo, Authenticator y combinación de ambos factores; códigos de recuperación.",
+      "body_en": "Sessions, roles, recovery, email verification, Authenticator and combined factors; recovery codes.",
+      "status_es": "Desarrollado. El correo requiere configurar el remitente.",
+      "status_en": "Developed. Email requires sender configuration."
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "title_es": "Correo transaccional",
+      "title_en": "Transactional email",
+      "body_es": "Recuperación de contraseña, invitaciones, códigos de verificación, avisos y resúmenes del negocio.",
+      "body_en": "Password recovery, invitations, verification codes, alerts and business summaries.",
+      "status_es": "Implementado; requiere dominio remitente verificado y prueba de entrega.",
+      "status_en": "Implemented; requires a verified sender domain and delivery testing."
+    },
+    {
+      "id": "qstash",
+      "name": "Upstash QStash",
+      "title_es": "Automatización programada",
+      "title_en": "Scheduled automation",
+      "body_es": "Recordatorios, alertas de stock y despacho, resúmenes y sincronización periódica de Instagram.",
+      "body_en": "Reminders, stock and delivery alerts, summaries and periodic Instagram sync.",
+      "status_es": "Implementado; calendarios y credenciales deben estar configurados.",
+      "status_en": "Implemented; schedules and credentials must be configured."
+    },
+    {
+      "id": "r2",
+      "name": "Cloudflare R2 / S3",
+      "title_es": "Archivos y continuidad",
+      "title_en": "Files and continuity",
+      "body_es": "Fotos, videos y tarjetas HTML recuperadas; almacenamiento de objetos y conservación de enlaces al contenido original.",
+      "body_en": "Photos, videos and recovered HTML cards; object storage and preservation of original content links.",
+      "status_es": "Adaptadores desarrollados; recursos y accesos dependen del entorno.",
+      "status_en": "Adapters developed; resources and access depend on the environment."
+    },
+    {
+      "id": "d1",
+      "name": "Workers + D1 + Drizzle",
+      "title_es": "Aplicación y datos",
+      "title_en": "Application and data",
+      "body_es": "Ejecución en Workers, persistencia D1, esquema y migraciones con Drizzle.",
+      "body_en": "Workers runtime, D1 persistence, schema and migrations with Drizzle.",
+      "status_es": "Arquitectura implementada en la variante Sites.",
+      "status_en": "Architecture implemented in the Sites variant."
+    },
+    {
+      "id": "shipping",
+      "name": "Despacho / Starken",
+      "title_es": "Logística del pedido",
+      "title_en": "Order logistics",
+      "body_es": "Direcciones, destinatarios y cálculo con tarifas registradas por destino, peso y volumen.",
+      "body_en": "Addresses, recipients and calculation with registered destination, weight and volume rates.",
+      "status_es": "Cotizador local desarrollado; API automática de Starken pendiente.",
+      "status_en": "Local quote logic developed; automatic Starken API integration pending."
+    },
+    {
+      "id": "nfc",
+      "name": "NFC + QR",
+      "title_es": "Acceso físico a digital",
+      "title_en": "Physical-to-digital access",
+      "body_es": "Perfiles, enlaces amigables, compatibilidad UUID, tarjetas recuperadas y registro de escaneos.",
+      "body_en": "Profiles, friendly URLs, UUID compatibility, recovered cards and scan recording.",
+      "status_es": "Funcionalidades desarrolladas.",
+      "status_en": "Features developed."
+    },
+    {
+      "id": "exports",
+      "name": "Excel / CSV",
+      "title_es": "Portabilidad de gestión",
+      "title_en": "Business data portability",
+      "body_es": "Exportación de información de materiales, stock, compras, ventas, costos y márgenes.",
+      "body_en": "Export of materials, stock, purchases, sales, costs and margins.",
+      "status_es": "Exportadores desarrollados.",
+      "status_en": "Exporters developed."
+    },
+    {
+      "id": "vps",
+      "name": "Docker + Caddy + SQLite",
+      "title_es": "Despliegue independiente",
+      "title_en": "Independent deployment",
+      "body_es": "Variante Next.js/Node, contenedores, proxy HTTPS, almacenamiento persistente, respaldo y restauración.",
+      "body_en": "Next.js/Node variant, containers, HTTPS proxy, persistent storage, backup and restore.",
+      "status_es": "Preparado para VPS; no implica una migración ya ejecutada.",
+      "status_en": "VPS-ready; does not imply a completed migration."
+    }
+  ]
+}

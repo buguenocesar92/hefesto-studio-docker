@@ -1,0 +1,26 @@
+{
+  "format": "adapter-input-json",
+  "minimum_plan": "intermedio",
+  "labels": [
+    "eventos-consulta",
+    "eventos-cotizacion",
+    "eventos-seguimiento"
+  ],
+  "canned_responses": [
+    {
+      "short_code": "bienvenida",
+      "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre productora de eventos?"
+    },
+    {
+      "short_code": "disponibilidad",
+      "content": "Podemos orientarte sobre producción, ambientación y coordinación. Indícanos qué necesitas."
+    },
+    {
+      "short_code": "seguimiento",
+      "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+    }
+  ],
+  "business_hours": null,
+  "channels_enabled": [],
+  "automation_rules": []
+}

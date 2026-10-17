@@ -1,0 +1,219 @@
+{
+  "id": "spa",
+  "version": "1.0.0",
+  "name": "Spa",
+  "category": "Cuidado personal",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "booking",
+  "minimum_plan": "basico",
+  "tags": [
+    "Servicios",
+    "Disponibilidad",
+    "Reagendar"
+  ],
+  "brand": {
+    "name": "Pausa natural",
+    "headline": "Vuelve a tu propio ritmo.",
+    "primary": "#52634c",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Ver experiencias",
+  "categories": [
+    "Masajes",
+    "Rituales",
+    "Experiencias"
+  ],
+  "items": [
+    {
+      "id": "spa-1",
+      "name": "Masaje de relajación",
+      "category": "Masajes",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "spa-2",
+      "name": "Ritual de descanso",
+      "category": "Rituales",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "spa-3",
+      "name": "Experiencia en pareja",
+      "category": "Experiencias",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Hora propuesta",
+    "Confirmada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/spa",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "spa-1",
+          "name": "Masaje de relajación",
+          "category": "Masajes",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "spa-2",
+          "name": "Ritual de descanso",
+          "category": "Rituales",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "spa-3",
+          "name": "Experiencia en pareja",
+          "category": "Experiencias",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Masajes",
+        "Rituales",
+        "Experiencias"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Hora propuesta",
+        "Confirmada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "spa-consulta",
+        "spa-cotizacion",
+        "spa-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre spa?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre masajes, rituales y experiencias. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Masaje de relajación",
+        "Ritual de descanso",
+        "Experiencia en pareja"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "spa_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "ritual",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "forest",
+    "illustration": "stone"
+  }
+}

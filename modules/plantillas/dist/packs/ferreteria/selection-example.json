@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "ferreteria",
+  "pack_version": "1.0.0",
+  "style_id": "editorial",
+  "plan": "premium",
+  "brand": {
+    "name": "Punto de obra",
+    "headline": "Ideas firmes. Manos a la obra.",
+    "primary": "#f76c22"
+  },
+  "origin": "owner",
+  "status": "draft",
+  "requires_owner_review": true,
+  "runtime_ai": false,
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/ferreteria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "ferreteria-1",
+          "name": "Taladro de ejemplo",
+          "category": "Herramientas",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "ferreteria-2",
+          "name": "Kit de tornillos",
+          "category": "Fijaciones",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "ferreteria-3",
+          "name": "Pintura interior",
+          "category": "Pinturas",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Herramientas",
+        "Fijaciones",
+        "Pinturas"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Cotización",
+        "Pedido confirmado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "ferreteria-consulta",
+        "ferreteria-cotizacion",
+        "ferreteria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre ferretería?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre herramientas, fijaciones y pinturas. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Taladro de ejemplo",
+        "Kit de tornillos",
+        "Pintura interior"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "ferreteria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "pos_enabled": true,
+  "deployment": {
+    "applied": false,
+    "requires_adapter": true,
+    "requires_backup": true
+  },
+  "requirements": []
+}

@@ -1,0 +1,49 @@
+const fs=require('fs'),path=require('path'),E=require('../dist/template-engine.js'),C=require('../dist/catalog.json');
+const root=path.resolve(__dirname,'../dist/packs');fs.mkdirSync(root,{recursive:true});
+const write=(p,s)=>{fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,s);};
+const json=(p,v)=>write(p,JSON.stringify(v,null,2)+'\n');
+const csv=rows=>rows.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n')+'\r\n';
+const patterns=[];
+for(const p of C.packs){const dir=path.join(root,p.id);json(dir+'/pack.json',p);json(dir+'/selection-example.json',E.selection(C,p,{},'premium','editorial'));
+ const blocks=`<!-- wp:group {"layout":{"type":"constrained"}} -->\n<div class="wp-block-group"><!-- wp:heading {"level":1} -->\n<h1 class="wp-block-heading">${E.esc(p.brand.headline)}</h1>\n<!-- /wp:heading -->\n<!-- wp:paragraph --><p>${E.esc(p.brand.name)} · ${E.esc(p.name)}. Contenido de ejemplo: reemplazar antes de publicar.</p><!-- /wp:paragraph -->\n${p.items.map(i=>`<!-- wp:heading --><h2 class="wp-block-heading">${E.esc(i.name)}</h2><!-- /wp:heading -->\n<!-- wp:paragraph --><p>${E.esc(i.category)}. Completa aquí descripción, condiciones y disponibilidad.</p><!-- /wp:paragraph -->`).join('\n')}\n<!-- wp:heading --><h2 class="wp-block-heading">Contacto</h2><!-- /wp:heading -->\n<!-- wp:paragraph --><p>Agrega tus datos de contacto verificados.</p><!-- /wp:paragraph --></div>\n<!-- /wp:group -->`;
+ write(dir+'/wordpress/home-pattern.html',blocks);patterns.push({slug:'hefesto/'+p.id,title:'Hefesto · '+p.name,description:'Base editorial para '+p.name+'. Contenido de ejemplo.',content:blocks});
+ write(dir+'/woocommerce/products.csv',csv([['Type','SKU','Name','Published','Regular price','Categories','Description'],...p.items.map((i,n)=>['simple',`HEFESTO-DEMO-${p.id}-${n+1}`,i.name,-1,'',i.category,'Ejemplo sin precio. Revisar antes de publicar.'])]));
+ write(dir+'/odoo/categories.csv',csv([['External ID','Name'],...p.categories.map((c,n)=>[`hefesto_${p.id.replaceAll('-','_')}_cat_${n+1}`,c])]));
+ for(const system of ['odoo','chatwoot','invoiceninja','whatsapp'])json(dir+'/'+system+'/blueprint.json',p.systems[system]);
+ for(const style of C.styles)write(dir+`/preview-${style.id}.html`,E.render(p,{},style.id,'web'));
+ for(const system of ['gestion','atencion','documentos'])write(dir+`/preview-${system}.html`,E.render(p,{},'editorial',system));
+ write(dir+'/LEEME.md',`# ${p.name}\n\nPack propio Hefesto ${p.version}, en borrador. Marcas y productos son ejemplos.\n\n- Abre los archivos preview en tu navegador.\n- WordPress: pega el patrón en el editor de código de una página de prueba, o usa el plugin conjunto. El HTML de las vistas previas es una referencia visual independiente; el patrón nativo es una base de bloques más sencilla.\n- WooCommerce: importa products.csv con su importador CSV, conserva Published=-1 (borrador) y revisa el mapeo. No establece precios, impuestos, stock ni pagos. Si repites, usa actualizar por SKU, sin duplicar productos.\n- Odoo: importa categories.csv en categorías de producto y mapea External ID/Name según tu versión. Los demás ajustes son blueprints, no módulos instalables. Revisa IDs y aislamiento de cada negocio.\n- Chatwoot e InvoiceNinja: los JSON son contratos de referencia para implementar adaptadores; no son archivos de importación nativos garantizados.\n- WhatsApp: propuestas sin aprobar; requieren revisión y aprobación del proveedor cuando corresponda.\n- selection-example.json es una selección Premium de ejemplo. La galería permite exportar otra selección con marca y plan. El ZIP contiene todas las bases; los permisos deben validarse en el servidor antes de aplicar.\n\n${p.requirements.join('\n\n')}\n\nNo contiene datos de clientes ni realiza cambios en ningún sistema.\n`);
+}
+const shared=path.resolve(__dirname,'../dist/integration');fs.mkdirSync(shared,{recursive:true});
+json(shared+'/hefesto-patterns/patterns.json',patterns);
+write(shared+'/hefesto-patterns/hefesto-patterns.php',`<?php
+/**
+ * Plugin Name: Hefesto — Packs por rubro
+ * Description: Registra 48 patrones de bloques con contenido de ejemplo. No crea ni modifica páginas.
+ * Version: 1.0.0
+ * Requires at least: 6.0
+ * License: GPL-2.0-or-later
+ */
+if (!defined('ABSPATH')) { exit; }
+add_action('init', function () {
+    if (!function_exists('register_block_pattern')) { return; }
+    register_block_pattern_category('hefesto', ['label' => 'Hefesto · Rubros']);
+    $raw = file_get_contents(__DIR__ . '/patterns.json');
+    $patterns = json_decode($raw, true);
+    if (!is_array($patterns)) { return; }
+    foreach ($patterns as $pattern) {
+        register_block_pattern($pattern['slug'], [
+            'title' => $pattern['title'],
+            'description' => $pattern['description'],
+            'categories' => ['hefesto'],
+            'content' => $pattern['content'],
+        ]);
+    }
+});
+`);
+write(shared+'/README.md',`# Integración de la biblioteca en Hefesto\n\n48 packs × 3 estilos = 144 combinaciones visuales, no 144 sistemas completos. Los diseños web son HTML independientes; las vistas de Odoo, Chatwoot e InvoiceNinja son maquetas.\n\n## Contenido utilizable\n- catalog.json: fuente versionada, con origen owner y estado draft.\n- packs/: un directorio por rubro, vistas HTML, patrón Gutenberg, CSV de productos en borrador, categorías y blueprints.\n- hefesto-patterns/: plugin WordPress que registra 48 patrones básicos; no aplica la apariencia completa de las vistas HTML. Comprime esta carpeta e instálala en un WordPress de pruebas.\n- TemplateCatalog.php: servicio PHP sin dependencias, usable desde Laravel. Resuelve selecciones usando plan y estilo permitidos. No llama APIs.\n- gallery/: código de la galería estática; abre index.html. Sus descargas ZIP requieren copiar la carpeta downloads desde el sitio o regenerar los paquetes con los scripts del repositorio.\n\n## Laravel / Blade\nCopia catalog.json fuera del directorio público (por ejemplo storage/app/hefesto/catalog.json), y la clase a app/Services adaptando su namespace. Sirve vistas Blade desde datos escapados. El HTML exportado puede convertirse en Blade; no ejecutes HTML recibido de usuarios.\n\nEl controlador debe obtener tenant, plan vigente y permisos desde la sesión y la base de datos del servidor. No confíes en plan, status, systems ni origin enviados por el navegador. Pasa a resolve únicamente los identificadores y valores de marca permitidos; los sistemas se recalculan a partir del catálogo. La marca admite texto y color hexadecimal, no scripts ni HTML.\n\n## Flujo que debe implementar el backend\n1. Autenticar, autorizar propiedad del tenant y leer el plan real.\n2. Resolver pack + versión + estilo; exigir aprobación editorial del pack y del propietario.\n3. Generar diff y revisión; guardar respaldo con identificador y recursos afectados.\n4. Aplicar en cola con bloqueo por tenant, versión y sistema. Clave de idempotencia: tenant_id + pack_id + pack_version + style_id + hash de configuración.\n5. Cada adaptador registra IDs externos creados y actualizados, estado previo y resultado. Reintentos no deben duplicar registros.\n6. Verificar y permitir reversión a partir del estado anterior. No borrar datos ajenos al pack ni sobrescribir cambios posteriores sin revisión.\n\nEste paquete NO implementa los adaptadores, la cola, el respaldo ni el rollback. El servicio solo calcula una selección determinista. Los impuestos, documentos fiscales, pagos, reservas, inventario y permisos requieren configuración del sistema real.\n\n## Disponibilidad por plan\nBásico: WordPress, WooCommerce, Odoo; sin POS. Intermedio: agrega Chatwoot, propuestas WhatsApp y POS cuando el rubro lo contempla. Premium: agrega InvoiceNinja. Comprueba límites comerciales contra tu configuración real antes de integrar. La presencia de un archivo en el ZIP no otorga permisos de plan.\n\n## Pruebas antes de activar\nPrueba versiones concretas de WordPress/WooCommerce/Odoo/Chatwoot/InvoiceNinja, mapeo CSV, aislamiento de tenants, repetición de tareas, fallos parciales, recuperación, permisos y bloqueo del plan. No enviar mensajes ni publicar productos durante pruebas. Las vistas y configuraciones son borradores.\n\n## Fuentes de formatos\n- https://developer.wordpress.org/reference/functions/register_block_pattern/\n- https://github.com/woocommerce/woocommerce/wiki/Product-CSV-Import-Schema\n- https://www.odoo.com/documentation/19.0/applications/essentials/export_import_data.html\n`);
+write(shared+'/legal/GUIA-LEGAL.md',`# Campos para revisión legal por negocio\n\nEste documento es una guía de redacción, no una política lista para publicar ni una certificación de cumplimiento.\n\n## Privacidad\n[IDENTIDAD DEL RESPONSABLE], [CONTACTO], datos realmente recogidos, finalidades, bases aplicables, destinatarios, proveedores, transferencias, conservación, derechos y canal de solicitudes. Revisa la normativa aplicable y fechas de vigencia.\n\n## Cookies\nInventaría las cookies y tecnologías reales con nombre, proveedor, finalidad y duración. Distingue necesarias de opcionales. Implementa consentimiento previo cuando proceda, rechazo igual de accesible y retiro de consentimiento. No declares cookies que no existan.\n\n## Términos de servicio o venta\n[IDENTIDAD], oferta, precios e impuestos revisados, contratación, medios de pago reales, entrega, cancelaciones, garantías y canales de atención. Adapta según el rubro y jurisdicción.\n\nNo recolectar datos de salud u otros datos sensibles desde formularios de ejemplo.\n`);
+console.log('Exportados',C.packs.length,'packs y',patterns.length,'patrones.');
+// Keep the reviewed integration guidance and pure PHP service across rebuilds.
+const integrationSource=path.resolve(__dirname,'../integration');
+if(fs.existsSync(integrationSource))fs.cpSync(integrationSource,shared,{recursive:true});

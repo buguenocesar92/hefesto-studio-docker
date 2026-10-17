@@ -1,0 +1,41 @@
+{
+  "projects": [
+    {
+      "id": "ordenia",
+      "name": "Ordenia",
+      "type": "own_project",
+      "url": "https://ordenia-asistente-personal.cbm3lla.chatgpt.site",
+      "status": "developed_connectors_pending_configuration",
+      "evidence": "Shared conversation 6ac832d6-fa2c-83e9-abe1-d774c8d4864a; app/classify.ts, app/organizer.ts, app/api/vault/route.ts"
+    },
+    {
+      "id": "public-lead-finder",
+      "name": "Public Lead Finder",
+      "type": "product",
+      "status": "implemented_external_validation_pending",
+      "scope": [
+        "public_business_discovery",
+        "deduplication",
+        "source_tracking",
+        "crm_export"
+      ],
+      "note": "Single operator. External providers tested with mocked responses; no live deployment verified.",
+      "stack": [
+        "FastAPI",
+        "Vue 3",
+        "Tailwind",
+        "PostgreSQL",
+        "Celery",
+        "Redis",
+        "Docker"
+      ],
+      "evidence": "Private GitHub repository reviewed through connector: README.md, docs/api.md, docs/scoring.md and backend/app/services/scoring.py. No source or credentials republished."
+    }
+  ],
+  "services": [
+    "quote_requests",
+    "support_bots",
+    "document_rag"
+  ],
+  "operations_rule": "Any SSH command or manual database edit repeated more than twice must become a versioned script; recurring work becomes a scheduled task."
+}

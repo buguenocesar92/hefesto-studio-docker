@@ -1,0 +1,26 @@
+{
+  "format": "adapter-input-json",
+  "minimum_plan": "intermedio",
+  "labels": [
+    "jardineria-consulta",
+    "jardineria-cotizacion",
+    "jardineria-seguimiento"
+  ],
+  "canned_responses": [
+    {
+      "short_code": "bienvenida",
+      "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre jardinería?"
+    },
+    {
+      "short_code": "disponibilidad",
+      "content": "Podemos orientarte sobre diseño, mantención y plantas. Indícanos qué necesitas."
+    },
+    {
+      "short_code": "seguimiento",
+      "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+    }
+  ],
+  "business_hours": null,
+  "channels_enabled": [],
+  "automation_rules": []
+}

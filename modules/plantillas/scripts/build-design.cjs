@@ -1,0 +1,20 @@
+const fs=require('fs'),path=require('path'),esbuild=require('esbuild'),{execFileSync}=require('child_process');
+fs.copyFileSync(path.resolve(__dirname,'../src/system-engine.js'),path.resolve(__dirname,'../dist/system-engine.js'));
+fs.copyFileSync(path.resolve(__dirname,'../src/system-runtime.js'),path.resolve(__dirname,'../dist/assets/system-runtime.js'));
+fs.copyFileSync(path.resolve(__dirname,'../src/system.css'),path.resolve(__dirname,'../dist/assets/system.css'));
+const COLLECTION=require('../src/collection-content.cjs');
+const D=require('../src/directions.cjs'),root=path.resolve(__dirname,'..');
+process.chdir(root);
+const src=fs.readFileSync('src/design-engine.js','utf8').replace('__DIRECTIONS__',JSON.stringify(D)).replace('__COLLECTION__',JSON.stringify(COLLECTION)).replace('__CSS__',JSON.stringify(fs.readFileSync('src/design.css','utf8')));
+fs.writeFileSync('dist/design-engine.js',src);
+execFileSync(process.execPath,['node_modules/@tailwindcss/cli/dist/index.mjs','-i','src/tailwind.css','-o','dist/assets/tailwind.css','--minify'],{stdio:'inherit'});
+execFileSync(process.execPath,['node_modules/@tailwindcss/cli/dist/index.mjs','-i','src/components.css','-o','dist/assets/components.css','--minify'],{stdio:'inherit'});
+(async()=>{await esbuild.build({entryPoints:['src/experience.js'],bundle:true,format:'iife',minify:true,outfile:'dist/assets/experience.js',legalComments:'external'});
+const C=JSON.parse(fs.readFileSync('dist/catalog.json','utf8'));C.release='2026-10-06';C.design_version='4.1.0';C.styles=[{id:'editorial',name:'Firma del rubro'},{id:'boutique',name:'Editorial expresivo'},{id:'directo',name:'Esencial'}];
+const preferred=['cafeteria','arquitectura','tecnologia','floreria','ropa','cabana','taller-mecanico','yoga','academia','minimarket','abogados','fotografia'];
+for(const p of C.packs){const d=D[p.id];p.brand.headline=d[4];p.brand.primary=d[2];p.design={family:d[0],version:'4.1.0',motion:'gsap',threejs:['kinetic','workshop'].includes(d[0])||p.id==='joyeria',photo:d[1],illustration:d[7]};p.featured=preferred.includes(p.id);}
+C.packs.sort((a,b)=>{const ai=preferred.indexOf(a.id),bi=preferred.indexOf(b.id);return(ai<0?100:ai)-(bi<0?100:bi);});
+fs.writeFileSync('dist/catalog.json',JSON.stringify(C,null,2));fs.writeFileSync('dist/catalog.js','window.HEFESTO_CATALOG='+JSON.stringify(C)+';');
+const E=require('../dist/design-engine.js');fs.mkdirSync('dist/thumbs',{recursive:true});
+for(const p of C.packs)for(const s of C.styles)fs.writeFileSync(`dist/thumbs/${p.id}-${s.id}.html`,E.render(p,{},s.id,'web',{thumbnail:true,assetBase:'../assets/'}));
+console.log('48 art directions / 12 families / 144 real thumbnails built');})();

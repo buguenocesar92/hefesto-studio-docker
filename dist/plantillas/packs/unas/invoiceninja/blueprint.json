@@ -1,0 +1,21 @@
+{
+  "format": "document-blueprint",
+  "minimum_plan": "premium",
+  "document_type": "quote",
+  "sections": [
+    "Emisor",
+    "Cliente",
+    "Detalle",
+    "Subtotal",
+    "Impuestos por revisar",
+    "Condiciones"
+  ],
+  "taxes": null,
+  "electronic_invoicing_enabled": false,
+  "sample_lines": [
+    "Manicure clásica",
+    "Diseño personalizado",
+    "Retiro y cuidado"
+  ],
+  "sender_legal_identity": null
+}

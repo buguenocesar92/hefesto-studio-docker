@@ -1,0 +1,218 @@
+{
+  "id": "minimarket",
+  "version": "1.0.0",
+  "name": "Minimarket",
+  "category": "Alimentos",
+  "origin": "owner",
+  "status": "draft",
+  "featured": true,
+  "layout": "shop",
+  "minimum_plan": "basico",
+  "tags": [
+    "Pedido",
+    "Retiro",
+    "Ingredientes"
+  ],
+  "brand": {
+    "name": "Almacén del barrio",
+    "headline": "Lo de siempre. Un poco mejor.",
+    "primary": "#275744",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Ver productos",
+  "categories": [
+    "Abarrotes",
+    "Bebidas",
+    "Limpieza"
+  ],
+  "items": [
+    {
+      "id": "minimarket-1",
+      "name": "Arroz familiar",
+      "category": "Abarrotes",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "minimarket-2",
+      "name": "Jugo natural",
+      "category": "Bebidas",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "minimarket-3",
+      "name": "Detergente",
+      "category": "Limpieza",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Recibido",
+    "En preparación",
+    "Listo para retiro"
+  ],
+  "pages": [
+    "Inicio",
+    "Catálogo",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "inventory",
+    "pos"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/minimarket",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "minimarket-1",
+          "name": "Arroz familiar",
+          "category": "Abarrotes",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "minimarket-2",
+          "name": "Jugo natural",
+          "category": "Bebidas",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "minimarket-3",
+          "name": "Detergente",
+          "category": "Limpieza",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Abarrotes",
+        "Bebidas",
+        "Limpieza"
+      ],
+      "pipeline": [
+        "Recibido",
+        "En preparación",
+        "Listo para retiro"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "minimarket-consulta",
+        "minimarket-cotizacion",
+        "minimarket-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre minimarket?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre abarrotes, bebidas y limpieza. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Arroz familiar",
+        "Jugo natural",
+        "Detergente"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "minimarket_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "market",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": null,
+    "illustration": "citrus"
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "id": "unas",
+  "version": "1.0.0",
+  "name": "Estudio de uñas",
+  "category": "Cuidado personal",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "booking",
+  "minimum_plan": "basico",
+  "tags": [
+    "Servicios",
+    "Disponibilidad",
+    "Reagendar"
+  ],
+  "brand": {
+    "name": "Trazo studio",
+    "headline": "Pequeño lienzo. Gran expresión.",
+    "primary": "#a93165",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Explorar servicios",
+  "categories": [
+    "Manicure",
+    "Diseño",
+    "Cuidado"
+  ],
+  "items": [
+    {
+      "id": "unas-1",
+      "name": "Manicure clásica",
+      "category": "Manicure",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "unas-2",
+      "name": "Diseño personalizado",
+      "category": "Diseño",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "unas-3",
+      "name": "Retiro y cuidado",
+      "category": "Cuidado",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Hora propuesta",
+    "Confirmada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/unas",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "unas-1",
+          "name": "Manicure clásica",
+          "category": "Manicure",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "unas-2",
+          "name": "Diseño personalizado",
+          "category": "Diseño",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "unas-3",
+          "name": "Retiro y cuidado",
+          "category": "Cuidado",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Manicure",
+        "Diseño",
+        "Cuidado"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Hora propuesta",
+        "Confirmada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "unas-consulta",
+        "unas-cotizacion",
+        "unas-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre estudio de uñas?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre manicure, diseño y cuidado. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Manicure clásica",
+        "Diseño personalizado",
+        "Retiro y cuidado"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "unas_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "flora",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": null,
+    "illustration": "flower"
+  }
+}

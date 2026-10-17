@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "mascotas",
+  "pack_version": "1.0.0",
+  "style_id": "editorial",
+  "plan": "premium",
+  "brand": {
+    "name": "Compañía animal",
+    "headline": "Su mundo empieza contigo.",
+    "primary": "#6c489a"
+  },
+  "origin": "owner",
+  "status": "draft",
+  "requires_owner_review": true,
+  "runtime_ai": false,
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/mascotas",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "mascotas-1",
+          "name": "Alimento de ejemplo",
+          "category": "Alimentos",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "mascotas-2",
+          "name": "Arnés de paseo",
+          "category": "Paseo",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "mascotas-3",
+          "name": "Juguete interactivo",
+          "category": "Juguetes",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Alimentos",
+        "Paseo",
+        "Juguetes"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Cotización",
+        "Pedido confirmado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "mascotas-consulta",
+        "mascotas-cotizacion",
+        "mascotas-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre tienda de mascotas?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre alimentos, paseo y juguetes. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Alimento de ejemplo",
+        "Arnés de paseo",
+        "Juguete interactivo"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "mascotas_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "pos_enabled": true,
+  "deployment": {
+    "applied": false,
+    "requires_adapter": true,
+    "requires_backup": true
+  },
+  "requirements": []
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "peluqueria",
+  "pack_version": "1.0.0",
+  "style_id": "editorial",
+  "plan": "premium",
+  "brand": {
+    "name": "Estudio raíz",
+    "headline": "Una nueva versión de ti.",
+    "primary": "#6b382c"
+  },
+  "origin": "owner",
+  "status": "draft",
+  "requires_owner_review": true,
+  "runtime_ai": false,
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/peluqueria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "peluqueria-1",
+          "name": "Corte personalizado",
+          "category": "Cortes",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "peluqueria-2",
+          "name": "Diagnóstico de color",
+          "category": "Color",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "peluqueria-3",
+          "name": "Tratamiento capilar",
+          "category": "Tratamientos",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Cortes",
+        "Color",
+        "Tratamientos"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Hora propuesta",
+        "Confirmada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "peluqueria-consulta",
+        "peluqueria-cotizacion",
+        "peluqueria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre peluquería?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre cortes, color y tratamientos. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Corte personalizado",
+        "Diagnóstico de color",
+        "Tratamiento capilar"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "peluqueria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "pos_enabled": false,
+  "deployment": {
+    "applied": false,
+    "requires_adapter": true,
+    "requires_backup": true
+  },
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ]
+}

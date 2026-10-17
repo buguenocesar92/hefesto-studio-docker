@@ -1,0 +1,26 @@
+{
+  "format": "configuration-blueprint-and-category-csv",
+  "minimum_plan": "basico",
+  "categories": [
+    "Hogar",
+    "Oficinas",
+    "Servicios puntuales"
+  ],
+  "pipeline": [
+    "Solicitud",
+    "Visita técnica",
+    "Presupuesto enviado"
+  ],
+  "roles": [
+    "Administración",
+    "Ventas",
+    "Operación"
+  ],
+  "pos_minimum_plan": "intermedio",
+  "taxes": {
+    "automatic_configuration": false,
+    "review_required": true
+  },
+  "electronic_invoicing_enabled": false,
+  "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+}

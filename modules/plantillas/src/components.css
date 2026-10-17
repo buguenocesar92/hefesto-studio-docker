@@ -1,0 +1,17 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@plugin "daisyui" {
+ themes: false;
+ include: button, input, textarea, select, badge, checkbox, loading, join, table;
+ prefix: "du-";
+ logs: false;
+}
+@source "./design-engine.js";
+@source "./system-engine.js";
+@source "../dist/index.html";
+@source "../dist/app.js";
+:root,body {
+ --color-base-100:var(--paper,#fff);--color-base-200:color-mix(in srgb,var(--paper,#fff) 94%,var(--ink,#222));--color-base-300:color-mix(in srgb,var(--paper,#fff) 85%,var(--ink,#222));--color-base-content:var(--ink,#222);
+ --color-primary:var(--accent,#36513c);--color-primary-content:var(--on-accent,#fff);--color-neutral:var(--ink,#222);--color-neutral-content:var(--paper,#fff);
+ --radius-selector:.6rem;--radius-field:.6rem;--radius-box:1rem;--size-selector:.25rem;--size-field:.25rem;--border:1px;--depth:0;--noise:0;
+}

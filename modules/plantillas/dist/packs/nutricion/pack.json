@@ -1,0 +1,220 @@
+{
+  "id": "nutricion",
+  "version": "1.0.0",
+  "name": "Consulta nutricional",
+  "category": "Educación y bienestar",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "course",
+  "minimum_plan": "basico",
+  "tags": [
+    "Programa",
+    "Horarios",
+    "Inscripción"
+  ],
+  "brand": {
+    "name": "Hábitos cercanos",
+    "headline": "Hábitos que crecen contigo.",
+    "primary": "#50723b",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Solicitar información",
+  "categories": [
+    "Orientación",
+    "Seguimiento",
+    "Talleres"
+  ],
+  "items": [
+    {
+      "id": "nutricion-1",
+      "name": "Consulta informativa",
+      "category": "Orientación",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "nutricion-2",
+      "name": "Sesión de seguimiento",
+      "category": "Seguimiento",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "nutricion-3",
+      "name": "Taller de hábitos",
+      "category": "Talleres",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Interés",
+    "Orientación",
+    "Inscripción"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas.",
+    "Solo información pública y consultas generales. No incluye ficha clínica ni captura de datos de salud."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/nutricion",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "nutricion-1",
+          "name": "Consulta informativa",
+          "category": "Orientación",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "nutricion-2",
+          "name": "Sesión de seguimiento",
+          "category": "Seguimiento",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "nutricion-3",
+          "name": "Taller de hábitos",
+          "category": "Talleres",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Orientación",
+        "Seguimiento",
+        "Talleres"
+      ],
+      "pipeline": [
+        "Interés",
+        "Orientación",
+        "Inscripción"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "nutricion-consulta",
+        "nutricion-cotizacion",
+        "nutricion-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre consulta nutricional?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre orientación, seguimiento y talleres. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Consulta informativa",
+        "Sesión de seguimiento",
+        "Taller de hábitos"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "nutricion_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "flora",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": null,
+    "illustration": "leaf"
+  }
+}

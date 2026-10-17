@@ -1,0 +1,219 @@
+{
+  "id": "inmobiliaria",
+  "version": "1.0.0",
+  "name": "Corredora de propiedades",
+  "category": "Especializados",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "property",
+  "minimum_plan": "basico",
+  "tags": [
+    "Catálogo",
+    "Cotización",
+    "Seguimiento"
+  ],
+  "brand": {
+    "name": "Habitar propiedades",
+    "headline": "Tu vida necesita otro espacio.",
+    "primary": "#27575b",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Explorar propiedades",
+  "categories": [
+    "Venta",
+    "Arriendo",
+    "Asesoría"
+  ],
+  "items": [
+    {
+      "id": "inmobiliaria-1",
+      "name": "Propiedad de ejemplo",
+      "category": "Venta",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "inmobiliaria-2",
+      "name": "Arriendo de muestra",
+      "category": "Arriendo",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "inmobiliaria-3",
+      "name": "Asesoría de publicación",
+      "category": "Asesoría",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "En evaluación",
+    "Propuesta enviada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Los inmuebles son ejemplos; no se publican direcciones ni propietarios reales."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/inmobiliaria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "inmobiliaria-1",
+          "name": "Propiedad de ejemplo",
+          "category": "Venta",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "inmobiliaria-2",
+          "name": "Arriendo de muestra",
+          "category": "Arriendo",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "inmobiliaria-3",
+          "name": "Asesoría de publicación",
+          "category": "Asesoría",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Venta",
+        "Arriendo",
+        "Asesoría"
+      ],
+      "pipeline": [
+        "Consulta",
+        "En evaluación",
+        "Propuesta enviada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "inmobiliaria-consulta",
+        "inmobiliaria-cotizacion",
+        "inmobiliaria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre corredora de propiedades?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre venta, arriendo y asesoría. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Propiedad de ejemplo",
+        "Arriendo de muestra",
+        "Asesoría de publicación"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "inmobiliaria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "brutalist",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "architecture",
+    "illustration": "architecture"
+  }
+}

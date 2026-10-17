@@ -1,0 +1,192 @@
+{
+  "ordenia": {
+    "name": "Ordenia",
+    "num": "02",
+    "tag": [
+      "ORGANIZACIÓN PERSONAL",
+      "PERSONAL ORGANISATION"
+    ],
+    "headline": [
+      "Menos ruido.\nMás espacio mental.",
+      "Less noise.\nMore mental space."
+    ],
+    "intro": [
+      "Convierte lo que tienes en mente en tareas, eventos, compras y notas. Un espacio propio para capturar, clasificar y volver a encontrar lo importante.",
+      "Turn what is on your mind into tasks, events, shopping and notes. Your own space to capture, classify and find what matters."
+    ],
+    "audience": [
+      "Para profesionales y personas que necesitan dar orden a sus pendientes e ideas.",
+      "For professionals and people who need to organise their tasks and ideas."
+    ],
+    "features": [
+      [
+        "Captura sin cambiar de contexto",
+        "Capture without switching context",
+        "Escribe una idea o un pendiente y revisa la propuesta antes de guardarlo.",
+        "Write an idea or task and review the suggestion before saving."
+      ],
+      [
+        "Cada cosa en su lugar",
+        "Everything in its place",
+        "Tareas, eventos, compras y notas con categorías y reglas personales.",
+        "Tasks, events, shopping and notes with categories and personal rules."
+      ],
+      [
+        "Tu espacio, separado",
+        "Your own separate space",
+        "Registros persistentes y organización por usuario para mantener tu información en su contexto.",
+        "Persistent records and per-user organisation keep information in context."
+      ],
+      [
+        "Conexiones que amplían el flujo",
+        "Connections that extend the flow",
+        "Conectores preparados para n8n, WhatsApp Cloud API y una bóveda Bitwarden; su activación se configura por proyecto.",
+        "Prepared connectors for n8n, WhatsApp Cloud API and a Bitwarden vault; activation is configured per project."
+      ]
+    ],
+    "flow": [
+      [
+        "Captura",
+        "Capture",
+        "Una frase, una idea o una lista.",
+        "A sentence, an idea or a list."
+      ],
+      [
+        "Revisa",
+        "Review",
+        "Comprueba categoría y tipo de registro.",
+        "Check the category and entry type."
+      ],
+      [
+        "Organiza",
+        "Organise",
+        "Guarda y encuentra tus pendientes.",
+        "Save and find your tasks."
+      ]
+    ],
+    "limits": [
+      "La versión desarrollada clasifica por reglas y permite conectar IA mediante n8n. La recepción de WhatsApp y la bóveda requieren configuración. No importa automáticamente chats personales; guardar una frecuencia no programa recordatorios por sí solo.",
+      "The developed version classifies by rules and can connect AI through n8n. WhatsApp intake and the vault need configuration. It does not automatically import personal chats; saving a frequency does not schedule reminders."
+    ],
+    "stack": [
+      "React",
+      "TypeScript",
+      "Cloudflare D1",
+      "Drizzle",
+      "n8n connector",
+      "WhatsApp Cloud API",
+      "Bitwarden bridge"
+    ],
+    "live": "https://ordenia-asistente-personal.cbm3lla.chatgpt.site",
+    "quote": "ordenia",
+    "faq": [
+      [
+        "¿Puedo usarlo con WhatsApp?",
+        "Can I use it with WhatsApp?",
+        "El flujo está preparado para mensajes enviados al número del asistente mediante la API oficial. Hay que configurar el número, webhook y vinculación del usuario.",
+        "The flow is prepared for messages sent to the assistant number through the official API. Number, webhook and user linking must be configured."
+      ],
+      [
+        "¿Qué se contrata?",
+        "What can I purchase?",
+        "Implementación y adaptación según tus necesidades: configuración, integraciones, despliegue y soporte acordado.",
+        "Implementation and customisation: setup, integrations, deployment and agreed support."
+      ]
+    ]
+  },
+  "public-lead-finder": {
+    "name": "Public Lead Finder",
+    "num": "03",
+    "tag": [
+      "INTELIGENCIA COMERCIAL",
+      "BUSINESS DISCOVERY"
+    ],
+    "headline": [
+      "Encuentra negocios.\nConstruye oportunidades.",
+      "Find businesses.\nBuild opportunities."
+    ],
+    "intro": [
+      "Descubre negocios por rubro y ubicación. Reúne contactos comerciales publicados, conserva sus fuentes y trabaja con una base organizada para tu prospección.",
+      "Discover businesses by industry and location. Gather published business contacts, preserve their sources and work with organised data for prospecting."
+    ],
+    "audience": [
+      "Para profesionales comerciales, agencias y negocios que necesitan investigar su mercado.",
+      "For sales professionals, agencies and businesses researching their market."
+    ],
+    "features": [
+      [
+        "Busca con dirección",
+        "Search with purpose",
+        "Planificación por ubicación y rubro, Google Places, búsqueda web, OpenStreetMap e importación CSV/URLs.",
+        "Location and industry planning, Google Places, web search, OpenStreetMap and CSV/URL import."
+      ],
+      [
+        "Conoce de dónde viene cada dato",
+        "Know where every data point comes from",
+        "Sitio oficial, emails comerciales, teléfonos, WhatsApp y redes publicados, con procedencia.",
+        "Official websites, published business emails, phones, WhatsApp and social links, with provenance."
+      ],
+      [
+        "Una base con menos duplicados",
+        "A database with fewer duplicates",
+        "Normalización y fusión por señales de identidad, revisión de calidad y actualización de registros.",
+        "Normalisation and identity-based merging, quality review and record refresh."
+      ],
+      [
+        "Lleva los resultados a tu flujo",
+        "Bring results into your workflow",
+        "Listas, filtros, analítica y exportaciones CSV/XLSX. Interfaz web, API y CLI para operar el producto.",
+        "Lists, filters, analytics and CSV/XLSX exports. Web UI, API and CLI to operate the product."
+      ]
+    ],
+    "flow": [
+      [
+        "Define",
+        "Define",
+        "Rubro, ubicación y presupuesto de búsqueda.",
+        "Industry, location and search budget."
+      ],
+      [
+        "Investiga",
+        "Research",
+        "Fuentes, contactos e identidad del negocio.",
+        "Sources, contacts and business identity."
+      ],
+      [
+        "Prioriza",
+        "Prioritise",
+        "Revisa la calidad y exporta tu selección.",
+        "Review data quality and export your selection."
+      ]
+    ],
+    "limits": [
+      "Versión actual de un solo operador, sin usuarios ni roles. Proveedores externos e Instagram pendientes de validación con credenciales reales. El crawler no ejecuta JavaScript. El score evalúa calidad del dato, no probabilidad de venta. No envía campañas ni accede a perfiles privados.",
+      "Current single-operator version, without users or roles. External providers and Instagram require real-credential validation. The crawler does not execute JavaScript. Scoring evaluates data quality, not likelihood of sale. It does not send campaigns or access private profiles."
+    ],
+    "stack": [
+      "FastAPI",
+      "Vue 3",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Celery",
+      "Redis",
+      "Docker"
+    ],
+    "live": null,
+    "quote": "lead",
+    "faq": [
+      [
+        "¿Incluye los costos de búsqueda?",
+        "Are search costs included?",
+        "Las APIs, hosting y operación se presupuestan por separado. El sistema permite definir límites de consumo y revisar una estimación antes de buscar.",
+        "APIs, hosting and operation are budgeted separately. The system supports usage limits and estimates before searching."
+      ],
+      [
+        "¿Garantiza contactos o ventas?",
+        "Does it guarantee contacts or sales?",
+        "No. La cobertura depende de las fuentes públicas, sus permisos y la vigencia de los datos. Los resultados se revisan antes de utilizarlos.",
+        "No. Coverage depends on public sources, permissions and data freshness. Results should be reviewed before use."
+      ]
+    ]
+  }
+}

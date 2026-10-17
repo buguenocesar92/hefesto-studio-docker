@@ -1,0 +1,11 @@
+node_modules/
+.sites-runtime/
+__pycache__/
+
+.env
+.env.*
+!.env.example
+backups/
+*secretos*
+secrets/
+*.dump

@@ -1,0 +1,217 @@
+{
+  "id": "taller-mecanico",
+  "version": "1.0.0",
+  "name": "Taller mecánico",
+  "category": "Hogar y oficios",
+  "origin": "owner",
+  "status": "draft",
+  "featured": true,
+  "layout": "service",
+  "minimum_plan": "basico",
+  "tags": [
+    "Visita",
+    "Presupuesto",
+    "Seguimiento"
+  ],
+  "brand": {
+    "name": "Motor y oficio",
+    "headline": "Precisión en cada movimiento.",
+    "primary": "#f7a62f",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Solicitar evaluación",
+  "categories": [
+    "Diagnóstico",
+    "Mantención",
+    "Reparación"
+  ],
+  "items": [
+    {
+      "id": "taller-mecanico-1",
+      "name": "Revisión inicial",
+      "category": "Diagnóstico",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "taller-mecanico-2",
+      "name": "Mantención programada",
+      "category": "Mantención",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "taller-mecanico-3",
+      "name": "Evaluación de reparación",
+      "category": "Reparación",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Solicitud",
+    "Visita técnica",
+    "Presupuesto enviado"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/taller-mecanico",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "taller-mecanico-1",
+          "name": "Revisión inicial",
+          "category": "Diagnóstico",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "taller-mecanico-2",
+          "name": "Mantención programada",
+          "category": "Mantención",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "taller-mecanico-3",
+          "name": "Evaluación de reparación",
+          "category": "Reparación",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Diagnóstico",
+        "Mantención",
+        "Reparación"
+      ],
+      "pipeline": [
+        "Solicitud",
+        "Visita técnica",
+        "Presupuesto enviado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "taller-mecanico-consulta",
+        "taller-mecanico-cotizacion",
+        "taller-mecanico-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre taller mecánico?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre diagnóstico, mantención y reparación. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Revisión inicial",
+        "Mantención programada",
+        "Evaluación de reparación"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "taller_mecanico_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "workshop",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": true,
+    "photo": null,
+    "illustration": "gear"
+  }
+}

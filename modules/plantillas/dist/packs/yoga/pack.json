@@ -1,0 +1,219 @@
+{
+  "id": "yoga",
+  "version": "1.0.0",
+  "name": "Estudio de yoga",
+  "category": "Educación y bienestar",
+  "origin": "owner",
+  "status": "draft",
+  "featured": true,
+  "layout": "course",
+  "minimum_plan": "basico",
+  "tags": [
+    "Programa",
+    "Horarios",
+    "Inscripción"
+  ],
+  "brand": {
+    "name": "Punto calma",
+    "headline": "Menos ruido. Más presente.",
+    "primary": "#665d43",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Ver las prácticas",
+  "categories": [
+    "Prácticas",
+    "Talleres",
+    "Individuales"
+  ],
+  "items": [
+    {
+      "id": "yoga-1",
+      "name": "Clase introductoria",
+      "category": "Prácticas",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "yoga-2",
+      "name": "Práctica grupal",
+      "category": "Talleres",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "yoga-3",
+      "name": "Sesión individual",
+      "category": "Individuales",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Interés",
+    "Orientación",
+    "Inscripción"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/yoga",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "yoga-1",
+          "name": "Clase introductoria",
+          "category": "Prácticas",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "yoga-2",
+          "name": "Práctica grupal",
+          "category": "Talleres",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "yoga-3",
+          "name": "Sesión individual",
+          "category": "Individuales",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Prácticas",
+        "Talleres",
+        "Individuales"
+      ],
+      "pipeline": [
+        "Interés",
+        "Orientación",
+        "Inscripción"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "yoga-consulta",
+        "yoga-cotizacion",
+        "yoga-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre estudio de yoga?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre prácticas, talleres y individuales. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Clase introductoria",
+        "Práctica grupal",
+        "Sesión individual"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "yoga_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "ritual",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "forest",
+    "illustration": "stone"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "format": "proposals-for-review",
+  "minimum_plan": "intermedio",
+  "approved": false,
+  "proposals": [
+    {
+      "name": "lavanderia_actualizacion",
+      "category_proposed": "UTILITY",
+      "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+      "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+    }
+  ]
+}

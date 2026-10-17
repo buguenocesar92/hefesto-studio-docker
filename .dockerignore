@@ -1,0 +1,9 @@
+**/node_modules
+.git
+.openai
+.sites-runtime
+.env
+.env.*
+**/secrets*
+**/*secretos*
+backups

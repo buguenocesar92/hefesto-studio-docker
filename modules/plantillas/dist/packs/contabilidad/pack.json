@@ -1,0 +1,217 @@
+{
+  "id": "contabilidad",
+  "version": "1.0.0",
+  "name": "Servicios contables",
+  "category": "Servicios profesionales",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "service",
+  "minimum_plan": "basico",
+  "tags": [
+    "Alcance",
+    "Cotización",
+    "Seguimiento"
+  ],
+  "brand": {
+    "name": "Balance claro",
+    "headline": "Números claros. Decisiones mejores.",
+    "primary": "#194f55",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Solicitar una reunión",
+  "categories": [
+    "Contabilidad",
+    "Asesoría",
+    "Gestión"
+  ],
+  "items": [
+    {
+      "id": "contabilidad-1",
+      "name": "Diagnóstico inicial",
+      "category": "Contabilidad",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "contabilidad-2",
+      "name": "Plan de acompañamiento",
+      "category": "Asesoría",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "contabilidad-3",
+      "name": "Revisión documental",
+      "category": "Gestión",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Diagnóstico",
+    "Propuesta enviada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/contabilidad",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "contabilidad-1",
+          "name": "Diagnóstico inicial",
+          "category": "Contabilidad",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "contabilidad-2",
+          "name": "Plan de acompañamiento",
+          "category": "Asesoría",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "contabilidad-3",
+          "name": "Revisión documental",
+          "category": "Gestión",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Contabilidad",
+        "Asesoría",
+        "Gestión"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Diagnóstico",
+        "Propuesta enviada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "contabilidad-consulta",
+        "contabilidad-cotizacion",
+        "contabilidad-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre servicios contables?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre contabilidad, asesoría y gestión. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Diagnóstico inicial",
+        "Plan de acompañamiento",
+        "Revisión documental"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "contabilidad_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "journal",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": null,
+    "illustration": "chart"
+  }
+}

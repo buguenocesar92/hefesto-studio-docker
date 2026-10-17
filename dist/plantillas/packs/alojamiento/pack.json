@@ -1,0 +1,219 @@
+{
+  "id": "alojamiento",
+  "version": "1.0.0",
+  "name": "Alojamiento",
+  "category": "Turismo y eventos",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "booking",
+  "minimum_plan": "basico",
+  "tags": [
+    "Fechas",
+    "Disponibilidad",
+    "Cotización"
+  ],
+  "brand": {
+    "name": "Refugio de estación",
+    "headline": "Tu tiempo. Otro paisaje.",
+    "primary": "#bddd9c",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Consultar fechas",
+  "categories": [
+    "Estadías",
+    "Experiencias",
+    "Servicios"
+  ],
+  "items": [
+    {
+      "id": "alojamiento-1",
+      "name": "Habitación de ejemplo",
+      "category": "Estadías",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "alojamiento-2",
+      "name": "Estadía de fin de semana",
+      "category": "Experiencias",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "alojamiento-3",
+      "name": "Servicio adicional",
+      "category": "Servicios",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Disponibilidad revisada",
+    "Propuesta enviada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/alojamiento",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "alojamiento-1",
+          "name": "Habitación de ejemplo",
+          "category": "Estadías",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "alojamiento-2",
+          "name": "Estadía de fin de semana",
+          "category": "Experiencias",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "alojamiento-3",
+          "name": "Servicio adicional",
+          "category": "Servicios",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Estadías",
+        "Experiencias",
+        "Servicios"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Disponibilidad revisada",
+        "Propuesta enviada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "alojamiento-consulta",
+        "alojamiento-cotizacion",
+        "alojamiento-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre alojamiento?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre estadías, experiencias y servicios. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Habitación de ejemplo",
+        "Estadía de fin de semana",
+        "Servicio adicional"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "alojamiento_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "retreat",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "cabin",
+    "illustration": "landscape"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format": "document-blueprint",
+  "minimum_plan": "premium",
+  "document_type": "quote",
+  "sections": [
+    "Emisor",
+    "Cliente",
+    "Detalle",
+    "Subtotal",
+    "Impuestos por revisar",
+    "Condiciones"
+  ],
+  "taxes": null,
+  "electronic_invoicing_enabled": false,
+  "sample_lines": [
+    "Diseño de jardín",
+    "Visita de mantención",
+    "Selección de plantas"
+  ],
+  "sender_legal_identity": null
+}

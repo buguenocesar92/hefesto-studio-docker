@@ -1,0 +1,218 @@
+{
+  "id": "libreria",
+  "version": "1.0.0",
+  "name": "Librería",
+  "category": "Comercio",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "shop",
+  "minimum_plan": "basico",
+  "tags": [
+    "Catálogo",
+    "Disponibilidad",
+    "Despacho"
+  ],
+  "brand": {
+    "name": "Entre páginas",
+    "headline": "Aquí empieza otra historia.",
+    "primary": "#912c34",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Descubrir libros",
+  "categories": [
+    "Literatura",
+    "Infantil",
+    "Papelería"
+  ],
+  "items": [
+    {
+      "id": "libreria-1",
+      "name": "Novela de muestra",
+      "category": "Literatura",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "libreria-2",
+      "name": "Cuento ilustrado",
+      "category": "Infantil",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "libreria-3",
+      "name": "Cuaderno de notas",
+      "category": "Papelería",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Cotización",
+    "Pedido confirmado"
+  ],
+  "pages": [
+    "Inicio",
+    "Catálogo",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "inventory",
+    "pos"
+  ],
+  "requirements": [],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Catálogo",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/libreria",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "libreria-1",
+          "name": "Novela de muestra",
+          "category": "Literatura",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "libreria-2",
+          "name": "Cuento ilustrado",
+          "category": "Infantil",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "libreria-3",
+          "name": "Cuaderno de notas",
+          "category": "Papelería",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Literatura",
+        "Infantil",
+        "Papelería"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Cotización",
+        "Pedido confirmado"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "libreria-consulta",
+        "libreria-cotizacion",
+        "libreria-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre librería?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre literatura, infantil y papelería. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Novela de muestra",
+        "Cuento ilustrado",
+        "Cuaderno de notas"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "libreria_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "journal",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": null,
+    "illustration": "book"
+  }
+}

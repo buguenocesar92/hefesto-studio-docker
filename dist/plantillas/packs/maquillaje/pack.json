@@ -1,0 +1,219 @@
+{
+  "id": "maquillaje",
+  "version": "1.0.0",
+  "name": "Maquillaje profesional",
+  "category": "Cuidado personal",
+  "origin": "owner",
+  "status": "draft",
+  "featured": false,
+  "layout": "booking",
+  "minimum_plan": "basico",
+  "tags": [
+    "Servicios",
+    "Disponibilidad",
+    "Reagendar"
+  ],
+  "brand": {
+    "name": "Luz propia",
+    "headline": "Tu esencia. Otra luz.",
+    "primary": "#883a46",
+    "secondary": "#f2eee5",
+    "logo": null
+  },
+  "cta": "Cotizar una sesión",
+  "categories": [
+    "Social",
+    "Novias",
+    "Clases"
+  ],
+  "items": [
+    {
+      "id": "maquillaje-1",
+      "name": "Maquillaje social",
+      "category": "Social",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "maquillaje-2",
+      "name": "Prueba de novia",
+      "category": "Novias",
+      "price": null,
+      "published": false
+    },
+    {
+      "id": "maquillaje-3",
+      "name": "Clase individual",
+      "category": "Clases",
+      "price": null,
+      "published": false
+    }
+  ],
+  "stages": [
+    "Consulta",
+    "Hora propuesta",
+    "Confirmada"
+  ],
+  "pages": [
+    "Inicio",
+    "Servicios",
+    "Nosotros",
+    "Contacto",
+    "Privacidad",
+    "Cookies"
+  ],
+  "modules": [
+    "website",
+    "catalog",
+    "crm",
+    "requests"
+  ],
+  "requirements": [
+    "Agenda y reservas requieren un módulo o servicio adicional; la plantilla incluye solicitudes, no reservas confirmadas."
+  ],
+  "systems": {
+    "wordpress": {
+      "format": "gutenberg-pattern",
+      "minimum_plan": "basico",
+      "pages": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto",
+        "Privacidad",
+        "Cookies"
+      ],
+      "navigation": [
+        "Inicio",
+        "Servicios",
+        "Nosotros",
+        "Contacto"
+      ],
+      "pattern": "hefesto/maquillaje",
+      "theme_compatibility": "Verificar con el tema instalado; usa bloques core."
+    },
+    "woocommerce": {
+      "format": "native-csv-draft",
+      "minimum_plan": "basico",
+      "sample_products": [
+        {
+          "id": "maquillaje-1",
+          "name": "Maquillaje social",
+          "category": "Social",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "maquillaje-2",
+          "name": "Prueba de novia",
+          "category": "Novias",
+          "price": null,
+          "published": false
+        },
+        {
+          "id": "maquillaje-3",
+          "name": "Clase individual",
+          "category": "Clases",
+          "price": null,
+          "published": false
+        }
+      ],
+      "price_policy": "Sin precio hasta revisión",
+      "automatic_publish": false
+    },
+    "odoo": {
+      "format": "configuration-blueprint-and-category-csv",
+      "minimum_plan": "basico",
+      "categories": [
+        "Social",
+        "Novias",
+        "Clases"
+      ],
+      "pipeline": [
+        "Consulta",
+        "Hora propuesta",
+        "Confirmada"
+      ],
+      "roles": [
+        "Administración",
+        "Ventas",
+        "Operación"
+      ],
+      "pos_minimum_plan": "intermedio",
+      "taxes": {
+        "automatic_configuration": false,
+        "review_required": true
+      },
+      "electronic_invoicing_enabled": false,
+      "compatibility": "Probar y mapear en la versión de Odoo instalada; no instala módulos ni roles."
+    },
+    "chatwoot": {
+      "format": "adapter-input-json",
+      "minimum_plan": "intermedio",
+      "labels": [
+        "maquillaje-consulta",
+        "maquillaje-cotizacion",
+        "maquillaje-seguimiento"
+      ],
+      "canned_responses": [
+        {
+          "short_code": "bienvenida",
+          "content": "Hola, gracias por contactar a {{business_name}}. ¿En qué podemos ayudarte sobre maquillaje profesional?"
+        },
+        {
+          "short_code": "disponibilidad",
+          "content": "Podemos orientarte sobre social, novias y clases. Indícanos qué necesitas."
+        },
+        {
+          "short_code": "seguimiento",
+          "content": "Recibimos tu consulta. Confirmaremos los próximos pasos por este mismo canal."
+        }
+      ],
+      "business_hours": null,
+      "channels_enabled": [],
+      "automation_rules": []
+    },
+    "invoiceninja": {
+      "format": "document-blueprint",
+      "minimum_plan": "premium",
+      "document_type": "quote",
+      "sections": [
+        "Emisor",
+        "Cliente",
+        "Detalle",
+        "Subtotal",
+        "Impuestos por revisar",
+        "Condiciones"
+      ],
+      "taxes": null,
+      "electronic_invoicing_enabled": false,
+      "sample_lines": [
+        "Maquillaje social",
+        "Prueba de novia",
+        "Clase individual"
+      ],
+      "sender_legal_identity": null
+    },
+    "whatsapp": {
+      "format": "proposals-for-review",
+      "minimum_plan": "intermedio",
+      "approved": false,
+      "proposals": [
+        {
+          "name": "maquillaje_actualizacion",
+          "category_proposed": "UTILITY",
+          "body": "Hola {{1}}, tenemos una actualización de tu solicitud {{2}} en {{3}}. Puedes consultarla en {{4}}.",
+          "note": "Requiere revisión, base de contacto y aprobación del proveedor; no se envía."
+        }
+      ]
+    }
+  },
+  "design": {
+    "family": "atelier",
+    "version": "4.1.0",
+    "motion": "gsap",
+    "threejs": false,
+    "photo": "skin",
+    "illustration": "fashion"
+  }
+}

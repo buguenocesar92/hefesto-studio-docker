@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 35 244 211" role="img" aria-labelledby="title">
+  <title id="title">KraftDo</title>
+  <defs>
+    <linearGradient id="blue" x1="54" y1="43" x2="226" y2="102" gradientUnits="userSpaceOnUse"><stop stop-color="#4895e2"/><stop offset=".48" stop-color="#27b9db"/><stop offset="1" stop-color="#00eeee"/></linearGradient>
+    <linearGradient id="green" x1="54" y1="181" x2="226" y2="238" gradientUnits="userSpaceOnUse"><stop stop-color="#05ee0a"/><stop offset=".55" stop-color="#31d933"/><stop offset="1" stop-color="#6cc36b"/></linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#blue)" stroke-width="12" stroke-linecap="round">
+    <path d="M54 99C84 25 198 25 226 99"/>
+    <path d="M77 99C100 47 181 47 204 99"/>
+    <path d="M99 102C120 77 160 77 182 102"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 128V157M47 128L28 143L49 157"/>
+    <path d="M61 157V129H73C89 129 89 144 73 144H61M75 144L86 157"/>
+    <path d="M95 157L106 129L118 157M99 148H114"/>
+    <path d="M130 157V129H149M130 142H145"/>
+    <path d="M160 129H182M171 129V157"/>
+    <path d="M195 129V157H204C224 157 224 129 204 129Z"/>
+    <path d="M242 129C222 129 222 157 242 157C261 157 261 129 242 129Z"/>
+  </g>
+  <g fill="none" stroke="url(#green)" stroke-width="12" stroke-linecap="round">
+    <path d="M54 181C84 255 198 255 226 181"/>
+    <path d="M77 181C100 228 181 228 204 181"/>
+    <path d="M99 180C120 204 160 204 182 180"/>
+  </g>
+</svg>
