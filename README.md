@@ -51,6 +51,7 @@ preparado para ese flujo:
   sin `name:` raíz ni redes/volúmenes con `name:` fijo, etc.). Ejecútalo
   antes de cada cambio relevante al `compose.yaml`.
 
-Para flujos no-Coolify (instalación local tradicional con Caddy incluido)
-el camino anterior sigue disponible usando el `.env` privado y los pasos
-de `portable/README.md`; ese modo coexiste sin conflictos.
+Este compose ya no incluye Caddy ni publica puertos; para uso local sin
+Coolify agrega un override propio que publique `app` (p. ej.
+`ports: ["8080:3000"]`). Las variables `SITE_ADDRESS`, `HTTP_PORT` y
+`HTTPS_PORT` de `portable/README.md` ya no aplican.

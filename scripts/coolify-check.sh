@@ -2,18 +2,16 @@
 # Comprueba que el compose de este repo cumple el contrato mínimo para
 # ser desplegado por Coolify detrás de Traefik.
 #
-# - Renderiza el compose con valores ficticios no secretos.
-# - Para cada servicio sin profiles exige el contrato Coolify.
-# - Falla con "servicio: motivo" ante cualquier desviación.
+# Uso: scripts/coolify-check.sh [ruta-al-compose]
+# Por defecto usa compose.yaml en la raíz del repo.
 
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
-compose_rel="compose.yaml"
-compose_path="$repo_root/$compose_rel"
+compose_path="${1:-$repo_root/compose.yaml}"
 
 if [ ! -f "$compose_path" ]; then
-  echo "FAIL: no se encuentra $compose_rel en la raíz del repo"
+  echo "FAIL: no se encuentra $compose_path"
   exit 1
 fi
 
@@ -22,9 +20,7 @@ vars=$(grep -oE '\$\{[A-Z_][A-Z0-9_]*[^}]*\}' "$compose_path" \
   | sed -E 's/^\$\{([A-Z_][A-Z0-9_]*).*$/\1/' \
   | sort -u)
 
-# Directorio temporal aislado: ahí copiamos lo mínimo para renderizar.
 tmp="$(mktemp -d)"
-trap 'rm -rf "$tmp"' EXIT
 tmp_env="$tmp/env"
 
 # .env ficticio: valores no secretos para renderizar; URL/host ficticios.
@@ -50,13 +46,24 @@ for v in $vars; do
   esac
 done
 
-cp "$compose_path" "$tmp/compose.yaml"
-[ -f "$repo_root/Dockerfile" ] && cp "$repo_root/Dockerfile" "$tmp/Dockerfile"
-> "$tmp/.env"
+# Si el compose referencia un .env relativo, asegura que exista (vacío)
+# en $repo_root para que docker compose config pueda renderizar. .env
+# está gitignorado y se elimina al salir; nunca se lee desde el shell.
+created_dotenv=0
+if grep -qE '^[[:space:]]*env_file:[[:space:]]*\.env([[:space:]]|$)' "$compose_path" \
+   && [ ! -f "$repo_root/.env" ]; then
+  : > "$repo_root/.env"
+  created_dotenv=1
+fi
+trap 'rm -rf "$tmp"; [ "$created_dotenv" = "1" ] && rm -f "$repo_root/.env"' EXIT
 
-if ! render_json=$(docker compose -f "$tmp/compose.yaml" \
+# Renderizar contra el repo (no en un temporal) para que los binds se
+# resuelvan relativos a $repo_root; con --env-file explícito no se
+# sustituyen variables desde el entorno del shell.
+if ! render_json=$(docker compose \
+    --project-directory "$repo_root" \
+    -f "$compose_path" \
     --env-file "$tmp_env" \
-    --project-directory "$tmp" \
     config --format json 2> "$tmp/stderr"); then
   echo "FAIL: docker compose config no pudo renderizar:"
   cat "$tmp/stderr"
@@ -64,6 +71,7 @@ if ! render_json=$(docker compose -f "$tmp/compose.yaml" \
 fi
 
 fail=0
+project_dir="$repo_root"
 
 # Solo los servicios sin profiles están sujetos al contrato.
 services_no_profile=$(printf '%s' "$render_json" | jq -r '
@@ -111,17 +119,23 @@ for svc in $services_no_profile; do
     fail=1
   fi
 
-  mounts=$(printf '%s' "$s" | jq -r '.volumes // [] | .[]? | .source // empty')
-  for m in $mounts; do
-    case "$m" in
-      /var/run/docker.sock|/proc*|/sys*|/dev/*)
-        echo "FAIL: $svc monta ruta del host fuera del repo: $m"
-        fail=1
-        ;;
-    esac
-  done
+  # Binds: solo se permiten rutas dentro del repo o el repo mismo.
+  bind_sources=$(printf '%s' "$s" | jq -r '.volumes // [] | .[] | select(.type=="bind") | .source')
+  while IFS= read -r m; do
+    [ -z "$m" ] && continue
+    if [[ "$m" == *docker.sock* ]]; then
+      echo "FAIL: $svc monta docker.sock: $m"
+      fail=1
+      continue
+    fi
+    if [ "$m" != "$project_dir" ] && [[ "$m" != "$project_dir"/* ]]; then
+      echo "FAIL: $svc: bind fuera del repo: $m"
+      fail=1
+    fi
+  done <<< "$bind_sources"
 done
 
+# name: raíz y nombres fijos de redes/volúmenes del compose fuente.
 name_violations=$(python3 - "$compose_path" <<'PY'
 import sys, yaml
 with open(sys.argv[1]) as f:
@@ -142,10 +156,6 @@ if [ -n "$name_violations" ]; then
   done <<< "$name_violations"
   fail=1
 fi
-
-# Las apps con bd: supabase-pg deben parametrizar DB_NAME y DB_SSLMODE.
-# Este repo usa postgres-local, así que la comprobación se omite salvo
-# que el compose declare servicios de tipo supabase-pg explícitamente.
 
 if [ "$fail" -ne 0 ]; then
   exit 1
