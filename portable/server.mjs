@@ -50,9 +50,13 @@ async function body(req) {
   return JSON.parse(Buffer.concat(chunks).toString());
 }
 function limited(req) {
-  const key =
-    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-    req.socket.remoteAddress;
+  // El cubo se arma con la IP de confianza: el ÚLTIMO elemento de
+  // `X-Forwarded-For`, que escribió el proxy de confianza. Tomar el
+  // PRIMERO (que pone el cliente) hacía el límite evadible: cada petición
+  // con un prefijo distinto abría su propio cubo y las 15 req/min nunca
+  // se alcanzaban (CWE-290, CWE-770).
+  // Es el mismo criterio de la bitácora y del repo hermano `hefesto-pos`.
+  const key = ipDeCliente(req);
   const b = buckets.get(key) || { count: 0, until: Date.now() + 60000 };
   if (b.until < Date.now()) {
     b.count = 0;
