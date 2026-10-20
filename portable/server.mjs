@@ -6,6 +6,17 @@ import { randomUUID, timingSafeEqual } from "node:crypto";
 import { pool } from "./db.mjs";
 import { validateQuote, askWorkflow, invoiceDraft } from "./core.mjs";
 import { aplicarCabecerasDeSeguridad } from "./security.mjs";
+import {
+  CONSULTA_SOLICITUDES,
+  CONSULTA_SOLICITUD_PARA_FACTURA,
+} from "./admin.mjs";
+import {
+  CATEGORIAS_DE_SOLICITUD,
+  huellaDeToken,
+  ipDeCliente,
+  registrarAcceso,
+  rutaDeAuditoria,
+} from "./auditoria.mjs";
 const root = path.resolve(fileURLToPath(new URL("../dist/", import.meta.url))),
   runtime = await readFile(new URL("./public/runtime.js", import.meta.url));
 const origin = new URL(process.env.APP_URL || "http://localhost:8080").origin;
@@ -104,11 +115,28 @@ const server = http.createServer(async (req, res) => {
             });
       }
       if (url.pathname.startsWith("/api/admin/")) {
-        if (!auth(req)) return json(res, 401, { error: "Unauthorized" });
+        if (!auth(req)) {
+          registrarAcceso({
+            metodo: req.method,
+            ruta: rutaDeAuditoria(url.pathname),
+            resultado: "denegado",
+            ip: ipDeCliente(req),
+            huella: huellaDeToken(req.headers.authorization),
+            categorias: [],
+          });
+          return json(res, 401, { error: "Unauthorized" });
+        }
         if (url.pathname === "/api/admin/quotes" && req.method === "GET") {
-          const r = await pool.query(
-            "SELECT * FROM quote_requests ORDER BY created_at DESC LIMIT 100",
-          );
+          const r = await pool.query(CONSULTA_SOLICITUDES);
+          registrarAcceso({
+            metodo: req.method,
+            ruta: rutaDeAuditoria(url.pathname),
+            resultado: "ok",
+            ip: ipDeCliente(req),
+            huella: huellaDeToken(req.headers.authorization),
+            filas: r.rows,
+            categorias: CATEGORIAS_DE_SOLICITUD,
+          });
           return json(res, 200, r.rows);
         }
         const match = url.pathname.match(
@@ -119,11 +147,18 @@ const server = http.createServer(async (req, res) => {
           const c = await pool.connect();
           try {
             await c.query("BEGIN");
-            const r = await c.query(
-              "SELECT * FROM quote_requests WHERE id=$1 FOR UPDATE",
-              [match[1]],
-            );
+            const r = await c.query(CONSULTA_SOLICITUD_PARA_FACTURA, [match[1]]);
             const q = r.rows[0];
+            registrarAcceso({
+              metodo: req.method,
+              ruta: rutaDeAuditoria(url.pathname),
+              recurso_id: match[1],
+              resultado: q ? "ok" : "sin_datos",
+              ip: ipDeCliente(req),
+              huella: huellaDeToken(req.headers.authorization),
+              filas: q ? [q] : [],
+              categorias: CATEGORIAS_DE_SOLICITUD,
+            });
             if (!q) {
               await c.query("ROLLBACK");
               return json(res, 404, { error: "Not found" });
@@ -219,5 +254,7 @@ const server = http.createServer(async (req, res) => {
     });
   }
 });
-server.listen(3000, "0.0.0.0");
+// El puerto es 3000 en el despliegue; se puede cambiar para las pruebas,
+// que levantan el servidor en un puerto libre para no chocar con nada.
+server.listen(Number(process.env.PORT) || 3000, "0.0.0.0");
 process.on("SIGTERM", () => server.close(() => pool.end()));
