@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { randomUUID, timingSafeEqual } from "node:crypto";
 import { pool } from "./db.mjs";
 import { validateQuote, askWorkflow, invoiceDraft } from "./core.mjs";
+import { aplicarCabecerasDeSeguridad } from "./security.mjs";
 const root = path.resolve(fileURLToPath(new URL("../dist/", import.meta.url))),
   runtime = await readFile(new URL("./public/runtime.js", import.meta.url));
 const origin = new URL(process.env.APP_URL || "http://localhost:8080").origin;
@@ -51,8 +52,7 @@ function limited(req) {
   return b.count > 15;
 }
 const server = http.createServer(async (req, res) => {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  aplicarCabecerasDeSeguridad(res);
   const url = new URL(req.url, "http://local");
   try {
     if (url.pathname === "/api/health") {
