@@ -6,6 +6,10 @@ import { randomUUID, timingSafeEqual } from "node:crypto";
 import { pool } from "./db.mjs";
 import { validateQuote, askWorkflow, invoiceDraft } from "./core.mjs";
 import { aplicarCabecerasDeSeguridad } from "./security.mjs";
+import {
+  CONSULTA_SOLICITUDES,
+  CONSULTA_SOLICITUD_PARA_FACTURA,
+} from "./admin.mjs";
 const root = path.resolve(fileURLToPath(new URL("../dist/", import.meta.url))),
   runtime = await readFile(new URL("./public/runtime.js", import.meta.url));
 const origin = new URL(process.env.APP_URL || "http://localhost:8080").origin;
@@ -106,9 +110,7 @@ const server = http.createServer(async (req, res) => {
       if (url.pathname.startsWith("/api/admin/")) {
         if (!auth(req)) return json(res, 401, { error: "Unauthorized" });
         if (url.pathname === "/api/admin/quotes" && req.method === "GET") {
-          const r = await pool.query(
-            "SELECT * FROM quote_requests ORDER BY created_at DESC LIMIT 100",
-          );
+          const r = await pool.query(CONSULTA_SOLICITUDES);
           return json(res, 200, r.rows);
         }
         const match = url.pathname.match(
@@ -119,10 +121,7 @@ const server = http.createServer(async (req, res) => {
           const c = await pool.connect();
           try {
             await c.query("BEGIN");
-            const r = await c.query(
-              "SELECT * FROM quote_requests WHERE id=$1 FOR UPDATE",
-              [match[1]],
-            );
+            const r = await c.query(CONSULTA_SOLICITUD_PARA_FACTURA, [match[1]]);
             const q = r.rows[0];
             if (!q) {
               await c.query("ROLLBACK");
