@@ -1,6 +1,6 @@
 # Hefesto — edición Docker
 
-Incluye la web completa, Node.js 24, PostgreSQL 17 y Caddy. Conserva portada, catálogo, legales, KraftDo y fichas de productos. **No es Laravel**: el frontend puede migrarse después a Blade y las migraciones/contratos sirven de referencia.
+Incluye la web completa, Node.js 24 y PostgreSQL 17. Conserva portada, catálogo, legales, KraftDo y fichas de productos. **No es Laravel**: el frontend puede migrarse después a Blade y las migraciones/contratos sirven de referencia.
 
 ## Alcance real
 
@@ -31,11 +31,13 @@ Invoke-RestMethod http://localhost:8080/api/health
 
 Abre http://localhost:8080. En Linux también puedes usar `sh portable/scripts/setup.sh`. `seed` actualiza el catálogo, no borra solicitudes. Las migraciones registran versiones y usan bloqueo y transacciones.
 
+Requiere el override con `ports: ["8080:3000"]` descrito en Producción.
+
 ## Producción
 
-En el VPS configura `.env` con `APP_URL=https://hefesto-studio.cl`, `SITE_ADDRESS=hefesto-studio.cl`, `HTTP_PORT=80`, `HTTPS_PORT=443`. El dominio debe apuntar al VPS y los puertos 80/443 deben estar accesibles para HTTPS automático. **Esto sustituiría el alojamiento Sites actual; el paquete no cambia DNS ni migra la publicación por sí solo.** Puedes validar primero con otro subdominio de tu propiedad.
+En producción el dominio lo enruta Coolify (o el proxy inverso propio del operador) hacia el servicio `app`, y `APP_URL` debe ser el dominio público exacto. Este compose ya no incluye Caddy ni publica puertos; para uso local sin Coolify agrega un override propio que publique `app` (p. ej. `ports: ["8080:3000"]`). Las variables `SITE_ADDRESS`, `HTTP_PORT` y `HTTPS_PORT` ya no aplican. **Esto sustituiría el alojamiento Sites actual; el paquete no cambia DNS ni migra la publicación por sí solo.** Puedes validar primero con otro subdominio de tu propiedad.
 
-No publiques el puerto de PostgreSQL ni el de Node. Caddy recibe tráfico y fija la IP de origen para el límite de solicitudes. El límite es local a cada proceso; antes de escalar a varias réplicas utiliza un almacén compartido y medidas antiabuso. No copies tokens al JavaScript del navegador.
+No publiques el puerto de PostgreSQL ni el de Node. El proxy inverso (Traefik en Coolify) recibe el tráfico y debe fijar la IP de origen para el límite de solicitudes. El límite es local a cada proceso; antes de escalar a varias réplicas utiliza un almacén compartido y medidas antiabuso. No copies tokens al JavaScript del navegador.
 
 ## API administrativa
 

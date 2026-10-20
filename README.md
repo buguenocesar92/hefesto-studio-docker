@@ -29,3 +29,29 @@ python3 scripts/sync-collection.py
 El último paso sincroniza la colección con el sitio y agrega navegación y enlaces al contacto; nunca reemplaza la portada. Sirve `dist/` desde un servidor HTTP local o tu hosting. Las descargas de packs se regeneran al construir.
 
 Las vistas de sistemas son demostraciones locales. No se modifica ninguna instalación externa. El sitio principal conserva su audiencia pública; no incorpora CV adjuntos ni credenciales.
+
+## Despliegue en Coolify (MVP Hefesto)
+
+Coolify pone Traefik delante del contenedor, así que el `compose.yaml` está
+preparado para ese flujo:
+
+- No hay servicio Caddy interno: Traefik enruta el dominio al servicio `app`.
+- Las credenciales se inyectan como variables del entorno directamente en el
+  panel de Coolify. Variables obligatorias:
+  - `APP_URL` (URL pública exacta, p. ej. `https://hefesto-studio.cl`).
+  - `ADMIN_API_TOKEN` (mínimo 32 caracteres; el `app` no arranca sin él).
+  - `PGPASSWORD` (Postgres del servicio `db` incluido).
+- Opcionales con valor por defecto o vacío (no rompen el arranque):
+  `PGDATABASE`, `PGUSER`, `N8N_CHAT_URL`, `N8N_CHAT_TOKEN`,
+  `INVOICE_NINJA_URL`, `INVOICE_NINJA_TOKEN`. Sin n8n ni Invoice Ninja
+  configurados el chat queda en `unconfigured` y el borrador de cotización
+  responde 503 — esperado.
+- El repositorio incluye `scripts/coolify-check.sh`, que verifica en local
+  que el `compose.yaml` siga cumpliendo el contrato (sin `ports:` propios,
+  sin `name:` raíz ni redes/volúmenes con `name:` fijo, etc.). Ejecútalo
+  antes de cada cambio relevante al `compose.yaml`.
+
+Este compose ya no incluye Caddy ni publica puertos; para uso local sin
+Coolify agrega un override propio que publique `app` (p. ej.
+`ports: ["8080:3000"]`). Las variables `SITE_ADDRESS`, `HTTP_PORT` y
+`HTTPS_PORT` de `portable/README.md` ya no aplican.
