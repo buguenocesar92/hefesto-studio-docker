@@ -1,0 +1,8 @@
+---
+import KraftdoPage from '../../../components/studio/KraftdoPage.astro';
+import { getKraftdoCase } from '../../../lib/hefesto-scaffolding';
+
+const caseData = await getKraftdoCase();
+---
+
+<KraftdoPage caseData={caseData} />

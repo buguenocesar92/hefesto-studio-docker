@@ -1,10 +1,10 @@
-const fs=require('fs'),path=require('path'),assert=require('assert/strict'),{execFileSync}=require('child_process'),{JSDOM}=require('../modules/plantillas/node_modules/jsdom');
-const read=p=>fs.readFileSync(p,'utf8'),original=execFileSync('git',['show','25f546242cea9eed0f9f65d25a7e6684aa118245:dist/index.html'],{maxBuffer:5e6}).toString();
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),{execFileSync}=require('child_process'),{JSDOM}=require('jsdom');
+const read=p=>fs.readFileSync(p,'utf8'),baseCommit=execFileSync('git',['rev-list','--max-parents=0','HEAD']).toString().trim(),original=execFileSync('git',['show',`${baseCommit}:dist/index.html`],{maxBuffer:5e6}).toString();
 const before=new JSDOM(original).window.document,dom=new JSDOM(read('dist/index.html'),{url:'https://example.test/?plantilla=cafeteria&plan=basico#contacto',runScripts:'outside-only'}),w=dom.window,d=w.document;
 // Preserve every pre-existing section, interaction script and legal page.
 for(const section of before.querySelectorAll('section[id]'))assert.ok(d.getElementById(section.id),section.id);
 for(const script of before.querySelectorAll('script'))assert.ok([...d.querySelectorAll('script')].some(s=>s.textContent===script.textContent),'original script retained');
-for(const p of ['aviso-legal','privacidad','cookies','terminos','accesibilidad','proteccion-datos']){assert.equal(read('dist/legal/'+p+'/index.html'),execFileSync('git',['show',`25f546242cea9eed0f9f65d25a7e6684aa118245:dist/legal/${p}/index.html`]).toString());}
+for(const p of ['aviso-legal','privacidad','cookies','terminos','accesibilidad','proteccion-datos']){assert.equal(read('dist/legal/'+p+'/index.html'),execFileSync('git',['show',`${baseCommit}:dist/legal/${p}/index.html`]).toString());}
 assert.equal(d.querySelectorAll('#plantillas').length,1);assert.equal(d.querySelectorAll('.unified-card').length,3);
 w.ResizeObserver=class{observe(){}};w.eval(read('dist/plantillas/catalog.js'));w.eval(read('dist/unified.js'));
 assert.equal(d.querySelectorAll('.unified-plan-link').length,3);assert.ok(d.querySelector('.unified-selection'));d.querySelector('.unified-selection button').click();assert.ok(d.querySelector('#brief').value.includes('Cafetería'));w.hefestoLanguage='en';w.dispatchEvent(new w.Event('hefesto-language'));assert.equal(d.querySelector('.unified-heading h2 span').textContent,'Your business.');w.close();

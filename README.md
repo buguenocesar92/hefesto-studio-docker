@@ -8,22 +8,26 @@ La portada original está en `dist/index.html`. Conserva su identidad, animació
 
 La biblioteca de 48 rubros forma parte del mismo sitio en `dist/plantillas/index.html`. No sustituye la portada. Los enlaces de selección retornan al contacto de Hefesto Studio. No se envía información ni se contratan servicios automáticamente.
 
-## Editar
+## Editar y construir (Astro 7 + React 19 + Hefesto Scaffolding API)
 
-- Portada: `dist/index.html`, `dist/unified.css`, `dist/unified.js`.
-- Legales: `dist/legal/`.
-- Plantillas: `modules/plantillas/src/`.
-- Galería base: `modules/plantillas/dist/index.html`, `app.js` y `styles.css`.
+El frontend de Hefesto Studio está construido sobre **Astro 7 + React 19** (`output: 'static'`) y genera `dist/` dinámicamente en cada despliegue consumiendo la API de **Hefesto Scaffolding** (`src/lib/hefesto-scaffolding.ts`) con fallback automático a los documentos JSON versionados en `content/`:
 
-Para reconstruir la colección:
+- **Portada unificada (`/`)**: [`src/pages/index.astro`](src/pages/index.astro) y [`src/components/studio/EcosystemSection.astro`](src/components/studio/EcosystemSection.astro).
+- **Caso KraftDo (`/proyectos/kraftdo/`)**: [`src/pages/proyectos/kraftdo/index.astro`](src/pages/proyectos/kraftdo/index.astro) + [`src/components/studio/KraftdoPage.astro`](src/components/studio/KraftdoPage.astro).
+- **Productos dinámicos (`/proyectos/[slug]/`)**: [`src/pages/proyectos/[slug].astro`](src/pages/proyectos/[slug].astro) (`ordenia`, `public-lead-finder` y nuevos productos publicados en Hefesto Scaffolding).
+- **Soluciones del ecosistema con configurador React (`/soluciones/[id]/`)**: [`src/pages/soluciones/[id].astro`](src/pages/soluciones/[id].astro) + [`src/components/react/SolutionConfigurator.tsx`](src/components/react/SolutionConfigurator.tsx).
+- **48 rubros con explorador React (`/rubros/[id]/`)**: [`src/pages/rubros/[id].astro`](src/pages/rubros/[id].astro) + [`src/components/react/RubroExplorer.tsx`](src/components/react/RubroExplorer.tsx).
+- **Casos de estudio dinámicos (`/casos/[slug]/`)**: [`src/pages/casos/[slug].astro`](src/pages/casos/[slug].astro).
+- **Legales (`/legal/[slug]/`)**: [`src/pages/legal/[slug]/index.html.ts`](src/pages/legal/[slug]/index.html.ts).
+- **Galería interactiva de plantillas (`/plantillas/`)**: `modules/plantillas/src/` sincronizada automáticamente por `scripts/sync-collection.py`.
+
+Para construir y verificar todo el sitio:
 
 ```sh
-cd modules/plantillas
 npm ci
+npm run check
 npm run build
 npm test
-cd ../..
-python3 scripts/sync-collection.py
 ```
 
 El último paso sincroniza la colección con el sitio y agrega navegación y enlaces al contacto; nunca reemplaza la portada. Sirve `dist/` desde un servidor HTTP local o tu hosting. Las descargas de packs se regeneran al construir.

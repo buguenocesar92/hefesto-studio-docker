@@ -1,0 +1,2 @@
+# Hefesto Studio Cloudflare Pages redirects
+# Las rutas estáticas (/proyectos/*, /soluciones/*, /rubros/*, /casos/*, /legal/*, /plantillas/*) se sirven directamente desde el CDN de Cloudflare.

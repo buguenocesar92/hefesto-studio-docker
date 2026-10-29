@@ -1,0 +1,107 @@
+---
+import type { EcosystemSolution } from '../../lib/hefesto-scaffolding';
+
+interface Props {
+  items: EcosystemSolution[];
+}
+
+const { items } = Astro.props;
+
+const filters = [
+  { value: 'all', es: 'Todo', en: 'All' },
+  { value: 'education', es: 'Educación', en: 'Education' },
+  { value: 'business', es: 'Gestión', en: 'Business' },
+  { value: 'content', es: 'Contenido', en: 'Content' },
+  { value: 'team', es: 'Equipo y acceso', en: 'Team and access' },
+  { value: 'growth', es: 'Marketing', en: 'Marketing' },
+];
+---
+
+<section id="ecosistema" class="section-space ecosystem">
+  <div class="wrap">
+    <div class="section-label mono">
+      <span>05.2</span>
+      <span data-unify-es="Ecosistema de soluciones" data-unify-en="Solutions ecosystem">Ecosistema de soluciones</span>
+    </div>
+    <div class="plans-heading">
+      <h2 class="section-title">
+        <span data-unify-es="Las piezas correctas." data-unify-en="The right pieces.">Las piezas correctas.</span><br />
+        <span data-unify-es="Un sistema para ti." data-unify-en="A system for you.">Un sistema para ti.</span>
+      </h2>
+      <p
+        data-unify-es="Ampliamos Hefesto con herramientas abiertas que podemos implementar y adaptar a tu negocio. Elige por lo que necesitas resolver."
+        data-unify-en="Expand Hefesto with open tools we can implement and adapt to your business. Choose based on what you need to solve."
+      >
+        Ampliamos Hefesto con herramientas abiertas que podemos implementar y adaptar a tu negocio. Elige por lo que necesitas resolver.
+      </p>
+    </div>
+
+    <div class="ecosystem-filters" role="group" aria-label="Filtrar soluciones">
+      {filters.map((f) => (
+        <button
+          type="button"
+          data-eco-filter={f.value}
+          aria-pressed={f.value === 'all' ? 'true' : 'false'}
+          data-unify-es={f.es}
+          data-unify-en={f.en}
+        >
+          {f.es}
+        </button>
+      ))}
+    </div>
+
+    <div class="ecosystem-grid">
+      {items.map((r) => (
+        <article class="ecosystem-card" data-eco-category={r.category}>
+          <div class="eco-top">
+            <span class="eco-letter" aria-hidden="true">{r.name[0]}</span>
+            <span class="mono muted" data-unify-es={r.kind_es} data-unify-en={r.kind_en}>{r.kind_es}</span>
+          </div>
+          <h3>{r.name}</h3>
+          <h4 data-unify-es={r.title_es} data-unify-en={r.title_en}>{r.title_es}</h4>
+          <p data-unify-es={r.body_es} data-unify-en={r.body_en}>{r.body_es}</p>
+          <div class="eco-actions">
+            <button
+              type="button"
+              data-eco-inquiry={r.name}
+              data-unify-es="Consultar implementación ↗"
+              data-unify-en="Discuss implementation ↗"
+            >
+              Consultar implementación ↗
+            </button>
+            <a href={`soluciones/${r.id}/`}>
+              <span data-unify-es="Ficha técnica" data-unify-en="Technical sheet">Ficha técnica</span>
+            </a>
+            <a href={r.url} target="_blank" rel="noopener noreferrer">
+              <span data-unify-es="Sitio oficial" data-unify-en="Official website">Sitio oficial</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="eco-note">
+      <p
+        data-unify-es="Implementaciones propuestas, sujetas a diagnóstico y cotización. La edición, licencia, módulos, hosting y mantenimiento se definen para cada proyecto. No están instaladas ni incluidas automáticamente en los planes."
+        data-unify-en="Proposed implementations, subject to assessment and quotation. Edition, licensing, modules, hosting and maintenance are defined per project. They are not installed or automatically included in plans."
+      >
+        Implementaciones propuestas, sujetas a diagnóstico y cotización. La edición, licencia, módulos, hosting y mantenimiento se definen para cada proyecto. No están instaladas ni incluidas automáticamente en los planes.
+      </p>
+      <p
+        data-unify-es="Una misma identidad visual, accesos coordinados y conexiones por API cuando la herramienta lo permita."
+        data-unify-en="A consistent visual identity, coordinated access and API connections where the tool supports them."
+      >
+        Una misma identidad visual, accesos coordinados y conexiones por API cuando la herramienta lo permita.
+      </p>
+    </div>
+
+    <a class="text-link" href="proyectos/kraftdo/#integraciones">
+      <span
+        data-unify-es="Ver las conexiones desarrolladas para KraftDo ↗"
+        data-unify-en="See the connections developed for KraftDo ↗"
+      >
+        Ver las conexiones desarrolladas para KraftDo ↗
+      </span>
+    </a>
+  </div>
+</section>

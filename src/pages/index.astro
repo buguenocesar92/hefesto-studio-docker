@@ -1,0 +1,56 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import EcosystemSection from '../components/studio/EcosystemSection.astro';
+import { getEcosystemSolutions } from '../lib/hefesto-scaffolding';
+
+interface StudioFragments {
+  head_inner: string;
+  header_html: string;
+  sections: Record<string, string>;
+  after_main: string;
+}
+
+const fragmentsPath = path.resolve(process.cwd(), 'src/data/studio-fragments.json');
+const fragments = JSON.parse(fs.readFileSync(fragmentsPath, 'utf-8')) as StudioFragments;
+const ecosystem = await getEcosystemSolutions();
+
+const preEcosystemIds = [
+  'inicio',
+  'plataforma',
+  'plantillas',
+  'proyectos',
+  'estudio',
+  'proceso',
+  'experiencia',
+  'integraciones',
+] as const;
+
+const postEcosystemIds = [
+  'novedades',
+  'planes',
+  'preguntas',
+  'cotizador',
+  'contacto',
+] as const;
+---
+
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="dark">
+  <head>
+    <Fragment set:html={fragments.head_inner} />
+  </head>
+  <body>
+    <Fragment set:html={fragments.header_html} />
+    <main id="contenido">
+      {preEcosystemIds.map((id) => (
+        <Fragment set:html={fragments.sections[id]} />
+      ))}
+      <EcosystemSection items={ecosystem} />
+      {postEcosystemIds.map((id) => (
+        <Fragment set:html={fragments.sections[id]} />
+      ))}
+    </main>
+    <Fragment set:html={fragments.after_main} />
+  </body>
+</html>
