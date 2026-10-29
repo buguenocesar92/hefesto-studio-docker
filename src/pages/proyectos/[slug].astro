@@ -1,0 +1,20 @@
+---
+import ProductPage from '../../components/studio/ProductPage.astro';
+import { getProducts, type ProductRecord } from '../../lib/hefesto-scaffolding';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: ProductRecord;
+}
+
+const { product } = Astro.props;
+---
+
+<ProductPage product={product} />

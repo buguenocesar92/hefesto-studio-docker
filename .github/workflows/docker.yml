@@ -1,5 +1,11 @@
-name: Validate portable Hefesto
-on: [push, pull_request]
+name: Validate portable Hefesto & Astro SSG
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [cms-updated, hefesto-scaffolding-updated]
 permissions:
   contents: read
 jobs:
@@ -11,7 +17,16 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          cache-dependency-path: portable/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            portable/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+        env:
+          HEFESTO_API_URL: ${{ secrets.HEFESTO_API_URL }}
+          PUBLIC_HEFESTO_API_URL: ${{ secrets.PUBLIC_HEFESTO_API_URL }}
+      - run: npm test
       - run: npm ci --prefix portable
       - run: npm test --prefix portable
       - run: node --check portable/server.mjs
